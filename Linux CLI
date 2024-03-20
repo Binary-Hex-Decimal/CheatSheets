@@ -6,19 +6,23 @@ Create a directory:
 --------------------
 mkdir "Directory1" "Directory2" "Directory3"
 
-Create Directory and sub-directorys:
+-Create Directory and sub-directorys:
 mkdir -p "parent/child/grandchild"
 
-Create a directory absolute path:
+-Create a directory absolute path:
 mkdir "Path""Directory1"
 
 Copy a file:
 --------------------
-cp "Source1" "Destination1"
-Copy file(s) to a destination:
+-Copy file(s) to a destination:
 cp "Source1" "Source2" "Source3" "Destination1"/
-Copy a directory:
+-Copy a directory:
 cp -R "Source1" "Destination1"
+
+Move a file:
+--------------------
+-"Change "Destination1" to rename the file."
+mv "Source1" "Source2" "Source3" "Destination1"/
 
 Remove file(s):
 --------------------
@@ -31,7 +35,7 @@ Find a file :
 --------------------
 find -iname "*.txt"
 
-Find a file with the extension ".text" and then prompt each file to be removed. removing "-i" will remove the prompt.
+-Find a file with the extension ".text" and then prompt each file to be removed. removing "-i" will remove the prompt.
 find -iname "*.txt" -exec rm -i {} \;
 
 Find files modified within the last 7 days.
@@ -40,9 +44,9 @@ find -mtime -7
 
 File Permissions:
 --------------------
-Add Read/Write and Execute permissions. 
+-Add Read/Write and Execute permissions. 
 chmod u+rwx "file"
 
-Remove Read/Write and Execute permissions. 
+-Remove Read/Write and Execute permissions. 
 chmod go-w [file_name]
 
