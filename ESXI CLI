@@ -1,0 +1,30 @@
+find /. -name *."Enter Extension" (Finds all files recursively with the extension you specify)
+
+chmod 777 “filename” (Sets a file to be executable)
+
+.\”Filename” /“Enter location to run ”
+
+esxcli system “hostname or version” get (display hostname or version/build)
+
+esxcli system stats installtime get (display install date)
+
+esxcli system maintenanceMode set –enable “true/False” (Enter maintenance mode)
+
+esxcli vm process list (List all running VMs)
+
+esxcli vm process kill -w 69237 -t soft (Shutdown a specific VM)
+
+esxcli storage filesystem list ()list all volumes or Datastores)
+
+esxcli network nic list (Show
+esxcli network ip interface list
+esxcli network vm list
+esxcli network vswitch standard list
+
+vim-cmd vmsvc/getallvms (List all VMs)
+vim-cmd vmsvc/get.summary “VMID”
+vim-cmd vmsvc/power.on “VMID”
+vim-cmd vmsvc/power.off “VMID”
+vim-cmd vmsvc/power.reboot “VMID”
+vim-cmd vmsvc/power.shutdown “VMID”
+vim-cmd vmsvc/power.suspend “VMID”
