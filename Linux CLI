@@ -1,0 +1,8 @@
+Find a file with the extension ".text".
+find -iname "*.txt"
+
+Find a file with the extension ".text" and then prompt each file to be removed. removing "-i" will remove the prompt.
+find -iname "*.txt" -exec rm -i {} \;
+
+Find files modified within the last 7 days.
+find -mtime -7
