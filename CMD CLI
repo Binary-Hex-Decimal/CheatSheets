@@ -1,0 +1,55 @@
+Change Drive location:
+"Mapped drive Letter":
+
+Change Folder location:
+CD "Folder location"
+
+Change to parent directory:
+CD ..
+
+Display only folders:
+DIR /A:D	
+Display only files:
+DIR /A:-D
+Display hidden files and folders:
+DIR /A:H
+
+Move a file to a new folder:
+MOVE "Old Path""File1" "New Path"	
+
+Copy a file to a new folder:
+COPY "File" "Destination"	
+
+Delete a file:
+DEL "File"
+
+Rename a file:
+REN "Old Filename" "New Filename"
+
+Create folder:
+MD "Folder Name"
+Delete a folder:
+RD "Folder Name"
+
+System Information:
+--------------------
+operating system version
+VER	
+
+List system configuration
+SYSTEMINFO	
+
+Show the computer’s hostname on the network
+HOSTNAME	
+
+Display Resultant Set of Policy (RSoP):
+GPRESULT
+
+Save Group Policy as a html:
+GPResult /H "Filepath""Filename.html"
+
+Update Group Policy:
+GPUPDATE /force	Update group policies
+
+Display Windows IP network configurations:
+IPCONFIG	
