@@ -1,0 +1,14 @@
+List all Docker containers:
+docker ps -a
+
+Stop the container:
+docker container stop "container_id"
+
+Remove the stopped container:
+docker container rm "container_id"
+
+To show the latest created container (includes all states) use the given command:
+docker ps -l
+
+List all docker images:
+docker images
