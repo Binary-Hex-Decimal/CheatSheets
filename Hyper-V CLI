@@ -1,0 +1,75 @@
+List all VMs:
+Get-VM
+
+Powered on VMs:
+Get-VM | where {$_.State -eq 'Running'}
+
+Powered off VMs:
+Get-VM | where {$_.State -eq 'Off'}
+
+Start particular VM:
+Start-VM -Name 2virtual machine name"
+
+Start all powered off VMs:
+Get-VM | where {$_.State -eq 'Off'} | Start-VM
+
+Shutdown all running VMs:
+Get-VM | where {$_.State -eq 'Running'} | Stop-VM
+
+Create snapshot of VM:
+Get-VM -Name <"VM Name" | Checkpoint-VM -SnapshotName "Snapshot name"
+
+Create a new VM:
+ $VMName = "VMNAME"
+
+ $VM = @{
+     Name = $VMName
+     MemoryStartupBytes = 2147483648
+     Generation = 2
+     NewVHDPath = "C:\Virtual Machines\$VMName\$VMName.vhdx"
+     NewVHDSizeBytes = 53687091200
+     BootDevice = "VHD"
+     Path = "C:\Virtual Machines\$VMName"
+     SwitchName = (Get-VMSwitch).Name
+ }
+
+ New-VM @VM
+
+Remove VM with prompt:
+Remove-VM "VM Name"
+
+Export Singular VM:
+Export-VM -Name "VM name" -Path "Destination"
+
+Export all VM:
+Get-VM | Export-VM -Path "Destination"
+
+Import VM and keep location:
+Import-VM -Path ""Path""VM ID".vmcx"
+
+Import and copy files to Host VM path.
+C:\> Import-VM -Path ""Path""VM ID".vmcx" -Copy -GenerateNewId
+
+List information about a vhd:
+Get-VHD -Path "Source Folder Path and File"
+ 
+List information about vhd(s) attatched to VM:
+Get-VM -VMName "VM Name" | Select-Object -Property VMId | Get-VHD
+
+Create dynamic VHD:
+New-VHD -Path ""Destination""filename".vhd[x]" or .vhd"c:\Base.vhdx -SizeBytes 10GB
+
+Create a static vhd:
+New-VHD -Path ""Path""filename".vhd[x] -Fixed -SourceDisk 2 -SizeBytes 1TB
+
+Convert VHD to VHDX:
+Convert-VHD -Path "Source Folder Path and File" -DestinationPath "Destination Folder Path and File"
+ 
+Exspand VHD to 1TB:
+Resize-VHD -Path ""path""filename".vhd" -SizeBytes 1099511627776
+
+change vhdx size:
+Resize-VHD -Path ""path""filename".vhdx" -SizeBytes 20GB
+
+Shrink vhdx:
+Resize-VHD -Path ""path""filename".vhdx"x -ToMinimumSize
