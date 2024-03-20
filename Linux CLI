@@ -1,3 +1,27 @@
+Show directories:
+ls
+Create a directory:
+mkdir "Directory1" "Directory2" "Directory3"
+
+Create Directory and sub-directorys:
+mkdir -p "parent/child/grandchild"
+
+Create a directory absolute path:
+mkdir "Path""Directory1"
+
+Copy a file:
+cp "Source1" "Destination1"
+Copy file(s) to a destination:
+cp "Source1" "Source2" "Source3" "Destination1"/
+Copy a directory:
+cp -R "Source1" "Destination1"
+
+Remove file(s):
+-i, Ask for confirmation
+-r, Delete directories
+
+rm "file1" "file2"
+
 Find a file with the extension ".text".
 find -iname "*.txt"
 
@@ -6,3 +30,10 @@ find -iname "*.txt" -exec rm -i {} \;
 
 Find files modified within the last 7 days.
 find -mtime -7
+
+Add Read/Write and Execute permissions. 
+chmod u+rwx "file"
+
+Remove Read/Write and Execute permissions. 
+chmod go-w [file_name]
+
