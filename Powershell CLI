@@ -1,44 +1,49 @@
 List all Powershell commands:
 --------------------
-Get-Command
+-Get-Command
 
 List help for specified Powershell command:
 --------------------
-Get-Help "Powershell command"
+-Get-Help "Powershell command"
 
 List all childitems in c:/:
 --------------------
-Get-ChildItem c:/
+-Get-ChildItem c:/
+
+Rename a file:
+--------------------
+-Rename-Item -Path “OldFile” -NewName “NewFile”
 
 Copy from Source to Destination.
 --------------------
-Get-ChildItem "Source1" -Recursive | Copy-Item -Destination "Destination1"
+-Get-ChildItem "Source1" -Recursive | Copy-Item -Destination "Destination1"
 
 Move from Source to Destination.
 --------------------
-Get-ChildItem "Source1" -Recursive | Move-Item -Destination "Destination1"
+-Get-ChildItem "Source1" -Recursive | Move-Item -Destination "Destination1"
 
 Delete a Directory:
 --------------------
-Remove-Item -Path "Source1" 
+-Remove-Item -Path "Source1" 
 
 Delete all files in a directory
 --------------------
-Get-ChildItem -Path "Source1" -File | Remove-Item
+-Get-ChildItem -Path "Source1" -File | Remove-Item
 
 Remove all ".log" items
 --------------------
-Remove-Item -Path "Source1" -Recursive -Include "*.log"
+-Remove-Item -Path "Source1" -Recursive -Include "*.log"
 
 Export Options:
+--------------------
 Export-Csv
-| Export-Csv "Filepath""Filename.csv" -NoTypeInformation
+-| Export-Csv "Filepath""Filename.csv" -NoTypeInformation
 
 Outfile
-| Out-File "Filepath""Filename.txt"
+-| Out-File "Filepath""Filename.txt"
 
 List processes:
-Get-Process
-
-Get-Process -Id "Process ID" | Stop-Process
-Get-Process -Id "Process ID" | Start-Process
+--------------------
+-Get-Process
+-Get-Process -Id "Process ID" | Stop-Process
+-Get-Process -Id "Process ID" | Start-Process
