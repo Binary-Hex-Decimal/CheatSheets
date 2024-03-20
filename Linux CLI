@@ -1,6 +1,9 @@
 Show directories:
+--------------------
 ls
+
 Create a directory:
+--------------------
 mkdir "Directory1" "Directory2" "Directory3"
 
 Create Directory and sub-directorys:
@@ -10,6 +13,7 @@ Create a directory absolute path:
 mkdir "Path""Directory1"
 
 Copy a file:
+--------------------
 cp "Source1" "Destination1"
 Copy file(s) to a destination:
 cp "Source1" "Source2" "Source3" "Destination1"/
@@ -17,20 +21,25 @@ Copy a directory:
 cp -R "Source1" "Destination1"
 
 Remove file(s):
+--------------------
 -i, Ask for confirmation
 -r, Delete directories
 
 rm "file1" "file2"
 
-Find a file with the extension ".text".
+Find a file :
+--------------------
 find -iname "*.txt"
 
 Find a file with the extension ".text" and then prompt each file to be removed. removing "-i" will remove the prompt.
 find -iname "*.txt" -exec rm -i {} \;
 
 Find files modified within the last 7 days.
+--------------------
 find -mtime -7
 
+File Permissions:
+--------------------
 Add Read/Write and Execute permissions. 
 chmod u+rwx "file"
 
