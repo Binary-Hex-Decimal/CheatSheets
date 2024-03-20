@@ -1,0 +1,8 @@
+Searches a file(s) based on a Keyword and then Excludes Keywords.
+
+-i, Ignore Case sensitivity.
+-a, Equivalent to --binary-files=text.
+-v, Ignore.
+ $, Ends with the Keyword. 
+
+grep --color -a -i "Include Keyword$" "Location & Filename" "Location & Filename" | grep -v 'ExcludeKeyword1\|ExcludeKeyword2\|ExcludeKeyword3'
