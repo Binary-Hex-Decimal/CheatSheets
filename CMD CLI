@@ -1,3 +1,6 @@
+Show directory and hidden files:
+ls -la
+
 Change Drive location:
 "Mapped drive Letter":
 
