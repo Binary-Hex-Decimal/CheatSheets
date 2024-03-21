@@ -1,0 +1,5 @@
+Search through a file(s) based on Keyword and exludes results matching a keyword:
+--------------------
+
+$ = Ends with keyword
+grep --color -a -i "Keyword$" "Path & Filename" "Path & Filename" | grep -v 'ExcludeKeyword1\|ExcludeKeyword2\|ExcludeKeyword3'
