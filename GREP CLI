@@ -6,7 +6,7 @@
 Searches a file(s) based on a Keyword and then Excludes Keywords:
 grep --color -a -i ""Keyword1$"\|"Keyword2$"\|"Keyword3$"" "Location & Filename" "Location & Filename" | grep -v 'ExcludeKeyword1\|ExcludeKeyword2\|ExcludeKeyword3'
 
-Searches for beggining of website:
+Searches for beginning of website:
 grep --color -a -i "http://\|https://" "Location & Filename"
 
 Searches for Ip Addresses:
