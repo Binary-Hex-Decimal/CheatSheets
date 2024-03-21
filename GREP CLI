@@ -1,4 +1,3 @@
-
 -i, Ignore Case sensitivity.
 -a, Equivalent to --binary-files=text.
 -v, Ignore.
