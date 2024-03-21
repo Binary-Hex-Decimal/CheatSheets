@@ -8,3 +8,16 @@ grep --color -a -i ""Keyword1$"\|"Keyword2$"\|"Keyword3$"" "Location & Filename"
 
 Searches for beggining of website:
 grep --color -a -i "http://\|https://" "Location & Filename"
+
+Searches for Ip Addresses:
+grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' "Location & Filename"
+
+Searches for All Ip Addresses and remove duplicates:
+grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' "Location & Filename" | awk '!x[$0]++'
+
+Search for ip address and remove private IPs:
+grep -a -i -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' "Location & Filename" | grep -v -e 10.* -e 192.168.* -e "172\.\(1[6-9]\|2[0-9]\|3[0-1]\)\.*" 
+
+Search for ip address and remove private IPs and duplicates:
+
+grep -a -i -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' "Location & Filename" | grep -v -e 10.* -e 192.168.* -e "172\.\(1[6-9]\|2[0-9]\|3[0-1]\)\.*" | awk '!x[$0]++'
