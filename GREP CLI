@@ -2,21 +2,22 @@
 -a, Equivalent to --binary-files=text.
 -v, Ignore.
  $, Ends with the Keyword. 
+--color=always, Always display color highlight.
 
 Searches a file(s) based on a Keyword and then Excludes Keywords:
-grep --color -a -i ""Keyword1$"\|"Keyword2$"\|"Keyword3$"" "Location & Filename" "Location & Filename" | grep -v 'ExcludeKeyword1\|ExcludeKeyword2\|ExcludeKeyword3'
+grep --color=always -a -i ""Keyword1$"\|"Keyword2$"\|"Keyword3$"" "Location & Filename" "Location & Filename" | grep -v 'ExcludeKeyword1\|ExcludeKeyword2\|ExcludeKeyword3'
 
 Searches for beginning of website:
-grep --color -a -i "http://\|https://" "Location & Filename"
+grep --color=always -a -i "http://\|https://" "Location & Filename"
 
 Searches for Ip Addresses:
-grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)" "Location & Filename"
+grep --color=always -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)" "Location & Filename"
 
 Searches for All Ip Addresses and remove duplicates:
-grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)" "Location & Filename" | awk '!x[$0]++'
+grep --color=always -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)" "Location & Filename" | awk '!x[$0]++'
 
 Search for ip address and remove private IPs:
-grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)" "Location & Filename" | grep -v -e 10.* -e 192.168.* -e "172\.\(1[6-9]\|2[0-9]\|3[0-1]\)\.*" | awk '!x[$0]++'
+grep --color=always -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)" "Location & Filename" | grep -v -e 10.* -e 192.168.* -e "172\.\(1[6-9]\|2[0-9]\|3[0-1]\)\.*" | awk '!x[$0]++'
 
 Search for ip address and remove private IPs and duplicates:
-grep -a -i -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' "Location & Filename" | grep -v -e 10.* -e 192.168.* -e "172\.\(1[6-9]\|2[0-9]\|3[0-1]\)\.*" | awk '!x[$0]++'
+grep --color=always -a -i -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' "Location & Filename" | grep -v -e 10.* -e 192.168.* -e "172\.\(1[6-9]\|2[0-9]\|3[0-1]\)\.*" | awk '!x[$0]++'
