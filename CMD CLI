@@ -22,6 +22,9 @@ DIR /A:-D
 Display hidden files and folders:
 DIR /A:H
 
+Search for file ending in
+dir /s *."extension"
+
 File/Folder Operations:
 ....................
 Move a file to a new folder:
@@ -85,3 +88,11 @@ SC STOP MyService
 
 Delete Service:
 SC DELETE MyService
+
+Netstat
+--------------------
+netstat -ano | finstr "Process ID"
+
+Telnet:
+--------------------
+telnet "Ip Address" "Port"
