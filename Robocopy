@@ -1,0 +1,5 @@
+Initial Data Transfer:
+robocopy "Source" "Destination" /NP /MT:32 /E /R:3 /W:5 /ZB /COPYALL /LOG:C:\Logs\AuditLog.log
+
+Subsequent Data Transfer:
+robocopy "Source" "Destination" /NP /MT:32 /E /R:3 /W:5 /ZB /COPYALL /MIR /LOG+:C:\RobocopyLogs\AuditLogIncremental.log
