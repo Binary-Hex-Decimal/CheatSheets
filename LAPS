@@ -1,0 +1,40 @@
+#############STEPS FOR LAPS IMPLEMENTATION############################
+
+###Download LAPS from Microsoft###################################
+
+####On a management server install the entire LAPS tool LAPS64.msi(or LAPS32.msi)#######
+
+####SOME USEFUL COMMANDS#########################
+
+Import-Module AdmPwd.PS ##This is required in ISE but not if you are running interactively on the command line
+Get-Command -Module AdmPwd.PS
+
+###LETS UPDATE THE SCHEMA####################
+
+Update-AdmPwdADSchema
+
+
+#########LETS GRANT COMPUTERS THE ABILITY TO UPDATE THERE PASSWORDS###############
+
+Set-AdmPwdComputerSelfPermission -Identity "Computers_OU"
+##OR
+Set-AdmPwdComputerSelfPermission -OrgUnit "OU=MyComputers,DC=lab,DC=org"
+
+#####LETS SEE WHO HAS RIGHTS TO SEE PASSWORDS
+Find-AdmPwdExtendedRights -Identity "Computers_OU"
+
+#####LETS NOW GRANT USERS PERMISSION TO SEE THE PC PASSWORD###########
+Set-AdmPwdReadPasswordPermission -Identity "Computers_OU" -AllowedPrincipals "Help_Desk"
+##or
+Set-AdmPwdReadPasswordPermission -OrgUnit "OU=MyComputers,DC=lab,DC=org" -AllowedPrincipals "Help_Desk"
+
+#####Then setup the GPO to enable ADM under Computer>Policies>Admin Templates>LAPS
+
+####Then deploy LAPS to your client devices#####################
+
+
+#########LAPS ISSUES##########################
+##If the local admin account was deleted and then a new one was created you might have to "name" the account in the group policy
+##if not LAPS might not work, for the local account LAPS is keying off of the SID, so if it was deleted the next 'admin' account would not have the same SID
+
+**https://github.com/fabianbrash/Recipes/blob/main/LAPS
