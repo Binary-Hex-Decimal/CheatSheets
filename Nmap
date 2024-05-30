@@ -1,5 +1,5 @@
 Nmap [1 - Target Specification] [2 - Host Discovery] [3 - Scan Technique] [4 - Port Specification] 
-//Optional [5 - SERVICE/VERSION DETECTION] [6 - SCRIPT SCAN] [7 - OS DETECTION] [8 - TIMING AND PERFORMANCE] [ 9 - FIREWALL/IDS EVASION AND SPOOFING]
+//Optional [5 - SERVICE/VERSION DETECTION] [6 - SCRIPT SCAN] [7 - OS DETECTION] [8 - TIMING AND PERFORMANCE] [ 9 - FIREWALL/IDS EVASION AND SPOOFING] [10 - OUTPUT]
 
 EXAMPLE:-
 --------------------
@@ -26,6 +26,24 @@ Prints verbose output, runs stealth syn scan, T5 timing, OS and version detectio
 
 nmap -v -p 1-65535 -sV -O -sS -T4 target
 Prints verbose output, runs stealth syn scan, T4 timing, OS and version detection + full port range scan.
+
+nmap -p80 -sV -oG - --open 192.168.1.1/24 | grep open 
+Scan for web servers and grep to show which IPs are running web servers 
+
+nmap -iR 10 -n -oX out.xml | grep "Nmap" | cut -d " " -f5 > live-hosts.txt 
+Generate a list of the IPs of live hosts
+
+nmap -iR 10 -n -oX out2.xml | grep "Nmap" | cut -d " " -f5 >> live-hosts.txt 
+Append IP to the list of live hosts
+
+ndiﬀ scanl.xml scan2.xml 
+Compare output from nmap using the ndiﬀ 
+
+xsltproc nmap.xml -o nmap.html 
+Convert nmap xml files to html files 
+
+grep " open " results.nmap | sed -r 's/ +/ /g' | sort | uniq -c | sort -rn | less Reverse sorted list of how o en ports turn up
+Reverse sorted list of how o en ports turn up
 
 1 - Target Specification:-
 
@@ -121,4 +139,20 @@ Switch Example Description
 -S nmap -S www.microso .com www.facebook.com Scan Facebook from Microso  (-e eth0 -Pn may be required)
 -g nmap -g 53 192.168.1.1 Use given source port number 
 --proxies http://192.168.1.1:8080, http://192.168.1.2:8080 192.168.1.1 Relay connections through HTTP/SOCKS4 proxies 
--length 200 192.168.1.1 Appends random data to sent packets 
+-length 200 192.168.1.1 Appends random data to sent packets
+
+10 - OUTPUT
+
+-oN normal.file Normal output to the file normal.file
+-oX xml.file XML output to the file xml.file
+-oG grep.file Grepable output to the file grep.file
+-oA results Output in the three major formats at once 
+-oG - Grepable output to screen. -oN -, -oX - also usable
+-oN file.file --append-output Append a scan to a previous scan file
+-v Increase the verbosity level (use -vv or more for greater eﬀect) 
+-d Increase debugging level (use -dd or more for greater eﬀect)
+--reason Display the reason a port is in a particular state, same output as -vv 
+--open Only show open (or possibly open) ports 
+--packet-trace Show all packets sent and received 
+--iflist Shows the host interfaces and routes
+--resume results.file Resume a scan
