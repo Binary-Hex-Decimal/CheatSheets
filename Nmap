@@ -1,0 +1,98 @@
+Nmap [1 - Target Specification] [2 - Host Discovery] [3 - Scan Technique] [4 - Port Specification] 
+//Optional [5 - SERVICE/VERSION DETECTION] [6 - SCRIPT SCAN] [7 - OS DETECTION] [8 - TIMING AND PERFORMANCE] [ 9 - FIREWALL/IDS EVASION AND SPOOFING]
+
+1 - Target Specification:-
+
+Scan a single IP
+--------------------
+nmap 192.168.1.1
+
+Scan specific IPs
+--------------------
+nmap 192.168.1.1 192.168.2.1 
+
+Scan a range
+--------------------
+nmap 192.168.1.1-254 
+
+Scan a domain
+--------------------
+nmap scanme.nmap.org
+
+Scan using CIDR notation
+--------------------
+nmap 192.168.1.0/24 
+
+Scan targets from a file
+--------------------
+nmap -iL targets.txt 
+
+2 - Host Dicovery:-
+
+-sL No Scan. List targets only
+-sn Disable port scanning
+-Pn Disable host discovery. Port scan only
+-PS22-25,80 TCP SYN discovery on port x. Port 80 by default
+-PA22-25,80 TCP ACK discovery on port x. Port 80 by default
+-PU53 UDP discovery on port x. Port 40125 by default
+-PR ARP discovery on local network
+-n Never do DNS resolution
+
+3 - Scan Technique:-
+
+-sS TCP SYN port scan (Default
+-sT TCP connect port scan (Default without root privilege
+-sU UDP port scan
+-sA TCP ACK port scan
+-sW TCP Window port scan
+-sM TCP Maimon port scan
+
+4 - Port Specification:-
+
+-p 21 Port scan for port x
+-p 21-100 Port range
+-p U:53,T:21-25,80 Port scan multiple TCP and UDP ports
+-p- Port scan all ports
+-p http,https Port scan from service name
+-F Fast port scan (100 ports)
+--top-ports 2000 Port scan the top x ports
+
+5 - SERVICE/VERSION DETECTION:-
+
+-sV --version-intensity// nmap 192.168.1.1 -sV --version-intensity "1-9" Intensity level 0 to 9. Higher number increases possibility of correctness
+-sV --version-light nmap 192.168.1.1 -sV "BLANK/--version-light/--version-all"
+-A nmap 192.168.1.1 -A Enables OS detection, version detection, script scanning, and traceroute
+
+6 - SCRIPT SCAN:-
+
+-sC Scan with default NSE scripts. Considered useful for discovery and safe
+--script default Scan with default NSE scripts. Considered useful for discovery and safe
+--script="banner" Scan with a single script. Example banner
+--script="http","banner" Scan with two scripts. Example http and banner
+--script=http* Scan with a wildcard. Example http
+--script snmp-sysdescr --script-args snmpcommunity=admin 192.168.1.1 NSE script with arguments
+
+7 - OS DETECTION:-
+
+-O Remote OS detection using TCP/IP stack fingerprinting
+-A Enables OS detection, version detection, script scanning, and traceroute
+
+8 - TIMING AND PERFORMANCE:-
+
+Switch Example Description
+-T0 Paranoid (0) Intrusion Detection System evasion
+-T1 Sneaky (1) Intrusion Detection System evasion
+-T2 Polite (2) slows down the scan to use less bandwidth and use less target machine resources
+-T3 Normal (3) which is default speed
+-T4 Aggressive (4) speeds scans; assumes you are on a reasonably fast and reliable network
+-T5 Insane (5) speeds scan; assumes you are on an extraordinarily fast network
+
+9 - FIREWALL/IDS EVASION AND SPOOFING:-
+
+-f Requested scan (including ping scans) use tiny fragmented IP packets. Harder for packet filters
+--mtu 32 Set your own oﬀset size
+-D 192.168.1.101,decoy-ip1 Send scans from spoofed IPs
+-S nmap -S www.microso .com www.facebook.com Scan Facebook from Microso  (-e eth0 -Pn may be required)
+-g nmap -g 53 192.168.1.1 Use given source port number 
+--proxies http://192.168.1.1:8080, http://192.168.1.2:8080 192.168.1.1 Relay connections through HTTP/SOCKS4 proxies 
+-length 200 192.168.1.1 Appends random data to sent packets 
