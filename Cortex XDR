@@ -1,0 +1,8 @@
+Find a specific value:
+echo "XDR password"!|cytool wf query|findstr /I "Value"
+
+Display information regarding a file:
+cytool fileinfo "filename.exe
+
+Display all affected processes:
+cytool enum
