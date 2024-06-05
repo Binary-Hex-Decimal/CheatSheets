@@ -1,0 +1,19 @@
+tasklist | findstr "Taskname"
+
+List of processes occupying more than 30MB of memory
+tasklist /fi "memusage gt 30000"
+
+Find the memory usage of a specific process
+tasklist /fi "pid eq "ProcessID""
+
+Find the list of not responding processes
+tasklist /fi "status eq not responding"
+
+Get the list of services running in a process
+tasklist /svc /fi "pid eq "ProcessID""
+
+Get a list of runnin processed
+tasklist /fi "STATUS eq running"
+
+Get list of processes running for more than certain time
+tasklist /fi "cputime gt hh:mm:ss"
