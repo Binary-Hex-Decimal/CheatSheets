@@ -6,3 +6,26 @@ cytool fileinfo "filename.exe
 
 Display all affected processes:
 cytool enum
+
+Scan host:
+cytool scan "start/stop/query"
+
+Local Database:
+cytool persist "list/export/import/print"
+
+Force Check-in:
+cytool checkin
+
+View Last Check in:
+cytool last_checkin
+
+check Connection status:
+cytool websocket query
+
+Firewall operations:
+cytool firewall "enable—Activates/disable/query—Displays/show—Displays"
+
+View, restore and delete quarantined files:
+cytool quarantine list—List all quarantined files.
+cytool quarantine restore <ID> [<path>]
+cytool quarantine delete <ID>
