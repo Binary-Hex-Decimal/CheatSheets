@@ -76,19 +76,6 @@ TASKLIST /SVC	Show services related to each task
 Terminate process with PID:
 TASKKILL /PID "Task ID"
 
-Services:
-....................
-View services:
-SC QUERY state= all
-
-SC QUERY MyService
-
-Stop Service:
-SC STOP MyService
-
-Delete Service:
-SC DELETE MyService
-
 Netstat
 --------------------
 netstat -ano | finstr "Process ID"
