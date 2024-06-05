@@ -44,11 +44,3 @@ MD "Folder Name"
 
 Delete a folder:
 RD "Folder Name"
-
-Netstat
---------------------
-netstat -ano | finstr "Process ID"
-
-Telnet:
---------------------
-telnet "Ip Address" "Port"
