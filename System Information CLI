@@ -1,0 +1,22 @@
+System Information:
+--------------------
+operating system version:
+VER	
+
+List system configuration:
+SYSTEMINFO	
+
+Show the computer’s hostname on the network:
+HOSTNAME	
+
+Display Resultant Set of Policy (RSoP):
+GPRESULT
+
+Save Group Policy as a html:
+GPResult /H "Filepath""Filename.html"
+
+Update Group Policy:
+GPUPDATE /force	Update group policies
+
+Display Windows IP network configurations:
+IPCONFIG	
