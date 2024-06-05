@@ -29,3 +29,6 @@ View, restore and delete quarantined files:
 cytool quarantine list—List all quarantined files.
 cytool quarantine restore <ID> [<path>]
 cytool quarantine delete <ID>
+
+Collects Logs to submit a suppor ticket:
+cytool log collect
