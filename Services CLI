@@ -1,0 +1,12 @@
+Services:
+....................
+View services:
+SC QUERY state= all
+
+SC QUERY MyService
+
+Stop Service:
+SC STOP MyService
+
+Delete Service:
+SC DELETE MyService
