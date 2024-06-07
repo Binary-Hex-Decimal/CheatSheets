@@ -1,0 +1,160 @@
+Cortex XQL query
+
+New Local User Creation
+
+dataset = xdr_data 
+| filter event_type = EVENT_LOG and action_evtlog_event_id = 4720
+| fields action_evtlog_data_fields as aedf, agent_hostname
+| filter aedf != null
+| alter UserName = replace(json_extract(aedf, "$.TargetUserName"), "\"","")
+| alter DomainName = replace(json_extract(aedf, "$.TargetDomainName"), "\"","")
+| alter WhoDid = replace(json_extract(aedf, "$.SubjectUserName"), "\"","")
+
+Local User Enabled
+
+dataset = xdr_data 
+
+| filter event_type = EVENT_LOG and action_evtlog_event_id = 4722
+| fields action_evtlog_data_fields as aedf, agent_hostname
+| filter aedf != null
+| alter UserName = json_extract(aedf, "$.TargetUserName")
+| alter DomainName = json_extract(aedf, "$.TargetDomainName")
+| alter WhoDid = json_extract(aedf, "$.SubjectUserName")
+
+Logins by Event ID 4624
+
+dataset = xdr_data 
+| filter event_type = EVENT_LOG and action_evtlog_event_id = 4624
+| fields action_evtlog_data_fields as aedf, agent_hostname
+| filter aedf != null
+| alter UserName = replace(json_extract(aedf, "$.TargetUserName"), "\"","")
+| alter DomainName = replace(json_extract(aedf, "$.TargetDomainName"), "\"","")
+| comp count(UserName) as Counter by UserName, agent_hostname, DomainName
+
+User Added to Local Administrators Group
+
+dataset = xdr_data
+| filter event_type = EVENT_LOG and action_evtlog_event_id = 4732
+| alter WhoDid = action_evtlog_data_fields->SubjectUserName
+| alter domainname = action_evtlog_data_fields->SubjectDomainName
+| alter GroupSID = action_evtlog_data_fields->TargetSid
+| alter MemberSID = action_evtlog_data_fields->MemberSid
+| alter GroupName = action_evtlog_data_fields->TargetUserName
+| filter (GroupSID = "S-1-5-32-544")
+| filter (MemberSid not contains "-512")
+| filter WhoDid not contains "$"
+| join type = left (dataset=ad_users) as ad ad.security_identifier = MemberSID 
+| dedup agent_hostname, action_evtlog_data_fields, domainname, WhoDid, sam_account_name, GroupName, GroupSID
+
+Domain Admin Logon with Exclusion by AD Group & DCs OU
+
+config case_sensitive = false
+| dataset = xdr_data 
+| filter event_type = EVENT_LOG and action_evtlog_event_id = 4624 
+| fields action_evtlog_data_fields as aedf, agent_hostname 
+| filter aedf != null
+| alter UserName = aedf->TargetUserName
+| alter DomainName = aedf->TargetDomainName
+| alter LogonType = aedf->LogonType
+| alter SourceIP = aedf->IpAddress
+| alter UserSID = aedf->TargetUserSid
+| join type=left (preset=ad_users | fields security_identifier , member_of ) as ad ad.security_identifier = UserSID
+| join type=left conflict_strategy=both (preset = ad_computers | fields name, OU, security_group_list) as adcoms adcoms.name = agent_hostname
+| alter isDomainAdmin = arrayfilter(member_of , "@element" = "CN=Domain Admins,CN=Users,DC=Domain,DC=com")
+| filter OU != "Domain Controllers"
+| filter isDomainAdmin != null
+| fields UserName, agent_hostname, DomainName, logonType, SourceIP, isDomainAdmin, member_of, security_group_list
+| dedup UserName, agent_hostname, DomainName, logonType, SourceIP
+
+Active Directory
+
+New Users
+dataset = xdr_data // Using the xdr dataset
+ | filter event_type = ENUM.EVENT_LOG and action_evtlog_event_id = 4720 
+| alter  Account_Creator = arrayindex(regextract(action_evtlog_message, "\s+(?:[^:]+:){3}([^\n]+)"),0), User_Name = arrayindex(regextract(action_evtlog_message, "\s+(?:[^:]+:){8}([^\n]+)"),0), Domain = arrayindex(regextract(action_evtlog_message, "\s+(?:[^:]+:){9}([^\n]+)"),0)
+| fields  User_Name as NEW_USER , Domain, Account_Creator as Who
+| filter NEW_USER not contains "Administrator"
+| sort desc _TIME 
+
+Users Enabled
+
+dataset = xdr_data // Using the xdr dataset
+ | filter event_type = ENUM.EVENT_LOG and action_evtlog_event_id = 4722 
+ // | fields action_evtlog_message
+| alter  Account_Creator = arrayindex(regextract(action_evtlog_message, "\s+(?:[^:]+:){3}([^\n]+)"),0), User_Name = arrayindex(regextract(action_evtlog_message, "\s+(?:[^:]+:){8}([^\n]+)"),0), Domain = arrayindex(regextract(action_evtlog_message, "\s+(?:[^:]+:){9}([^\n]+)"),0)
+| fields  User_Name as Enabled_Account , Domain, Account_Creator as Who
+| sort desc _TIME 
+
+Users Disabled
+
+dataset = xdr_data // Using the xdr dataset
+| filter event_type = ENUM.EVENT_LOG and action_evtlog_event_id = 4725 
+| alter  Account_Creator = arrayindex(regextract(action_evtlog_message, "\s+(?:[^:]+:){3}([^\n]+)"),0), User_Name = arrayindex(regextract(action_evtlog_message, "\s+(?:[^:]+:){8}([^\n]+)"),0), Domain = arrayindex(regextract(action_evtlog_message, "\s+(?:[^:]+:){9}([^\n]+)"),0)
+| fields  User_Name as Disabled_Account , Domain, Account_Creator as Who
+| sort desc _TIME 
+
+Locked User Accounts
+
+dataset = xdr_data // Using the xdr dataset
+| filter event_type = ENUM.EVENT_LOG and action_evtlog_event_id = 4740 
+| alter  Locked_Account = arrayindex(regextract(action_evtlog_message, "\s+(?:[^:]+:){8}([^\n]+)"),0), Domain = arrayindex(regextract(action_evtlog_message, "\s+(?:[^:]+:){4}([^\n]+)"),0)
+| fields  Locked_Account, Domain , agent_hostname as HOST
+| sort desc _TIME 
+
+
+Local Admin Elevation using Consent
+filter actor_process_image_name = "consent.exe"
+| filter causality_actor_process_image_name not in ("consent.exe")
+| fields _TIME as Time, agent_hostname, causality_actor_primary_username , actor_process_image_name, actor_process_image_path, causality_actor_process_image_name
+| comp values(causality_actor_primary_username) as User by Time , causality_actor_primary_username, actor_process_image_name, actor_process_image_path
+| fields  Time, User, actor_process_image_name, actor_process_image_path
+
+Domain Group Changes
+
+dataset = xdr_data // Using the xdr dataset
+ | filter event_type = ENUM.EVENT_LOG and action_evtlog_event_id in (4756)  
+
+ // | fields action_evtlog_message
+| alter  DA = arrayindex(regextract(action_evtlog_message, "\s+(?:[^:]+:){3}([^\n]+)"),0), User_Name = arrayindex(regextract(action_evtlog_message, "\s+(?:[^:]+:){8}([^\n]+)"),0), Domain = arrayindex(regextract(action_evtlog_message, "\s+(?:[^:]+:){4}([^\n]+)"),0), NewGroup = arrayindex(regextract(action_evtlog_message, "\s+(?:[^:]+:){11}([^\n]+)"),0)
+
+| fields DA as Domain_Administrator, User_Name as Affected_User, NewGroup ,Domain as User_Domain  
+| sort desc _time 
+```
+
+Failed Logon
+
+//Failed_Logins
+
+preset = xdr_event_log 
+| filter action_evtlog_event_id = 4625 
+| alter User_Name =arrayindex(regextract(action_evtlog_data_fields, "TargetUserName\":??\"([[:ascii:]]*?)\""),0)
+| alter Host_Name =arrayindex(regextract(action_evtlog_data_fields, "WorkstationName\":??\"([[:ascii:]]*?)\""),0)
+| alter Domain_Name =arrayindex(regextract(action_evtlog_data_fields, "TargetDomainName\":??\"([[:ascii:]]*?)\""),0)
+| alter Logon_Type =arrayindex(regextract(action_evtlog_data_fields, "LogonType\":??\"([[:ascii:]]*?)\""),0)
+| alter Failure_Reason =arrayindex(regextract(action_evtlog_data_fields, "FailureReason\":??\"([[:ascii:]]*?)\""),0) 
+| alter Source_IP =arrayindex(regextract(action_evtlog_data_fields, "IpAddress\":??\"([[:ascii:]]*?)\""),0)
+| alter Caller_Process_Name =arrayindex(regextract(action_evtlog_data_fields, "\"ProcessName\":??\"([[:ascii:]]*?)\""),0)
+| alter Failure_Reason = replace(Failure_Reason,"%%2304","An Error occured during Logon.")
+| alter Failure_Reason = replace(Failure_Reason,"%%2305","The specified user account has expired")
+| alter Failure_Reason = replace(Failure_Reason,"%%2306","The NetLogon component is not active.")
+| alter Failure_Reason = replace(Failure_Reason,"%%2307","Account locked out.")
+| alter Failure_Reason = replace(Failure_Reason,"%%2308","The user has not been granted the requested logon type at this machine.")
+| alter Failure_Reason = replace(Failure_Reason,"%%2309","The specified account's password has expired")
+| alter Failure_Reason = replace(Failure_Reason,"%%2310","Account currently disabled")
+| alter Failure_Reason = replace(Failure_Reason,"%%2311","Account logon time restriction violation")
+| alter Failure_Reason = replace(Failure_Reason,"%%2312","User not allowed to logon at this computer")
+| alter Failure_Reason = replace(Failure_Reason,"%%2313","Unknown user name or bad password")
+| alter Failure_Reason = replace(Failure_Reason,"%%2314","Domain sid inconsistent.")
+| alter Failure_Reason = replace(Failure_Reason,"%%2315","Smartcard logon is required and was not used.")
+| fields User_Name, Host_Name, Domain_Name, Logon_Type, Failure_Reason, Source_IP, Caller_Process_Name 
+
+Sortware and Version
+
+config case_sensitive = false
+| dataset = host_inventory 
+| arrayexpand applications
+| alter app_name = json_extract(applications, "$.application_name")
+| alter app_version = replex(json_extract(applications , "$.raw_version"),"\"","")
+| filter app_name not contains "matrix42"
+| filter app_name contains "mozilla firefox" and app_version < "99.0.1"
+| fields app_name , host_name , app_version
