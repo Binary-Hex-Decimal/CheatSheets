@@ -1,0 +1,68 @@
+//Show you all active user accounts that have logged in within the last 7 days and have a level of 3 or higher
+
+SigninLogs
+| where TimeGenerated >= ago(7d)
+| where level >= 3
+| project IPAddress, UserDisplayName, Level
+
+SecurityEvent
+| where AccountType == "User" 
+// Event ID 4720 = A user account was created. Event ID 4732 = A member was added to a security-enabled local group.
+| where EventID == "4720" or EventID == "4732"
+| project TargetAccount
+
+//Show accounts that haven't logged in for 50 days
+
+let IdleAccountTimeOut = 50d;  // Number of days an account must not have logged in for to be considered dormant
+let timeHorizon = 90d;  // How many days back to check in IdentityInfo
+IdentityInfo
+| where TimeGenerated >=ago(timeHorizon)
+| summarize dcount(AccountObjectId) by AccountObjectId, AccountUPN
+| join kind=anti (SigninLogs
+| where TimeGenerated >= ago(IdleAccountTimeOut)
+| where ResultType==0
+//| summarize dcount(UserPrincipalName) by UserPrincipalName
+) on $left.AccountObjectId == $right.UserId
+
+// Windows failed logins. Find reports of Windows accounts that failed to login.
+
+SecurityEvent
+| where EventID == 4625
+| summarize count() by TargetAccount
+| sort by count_ desc 
+
+// A user account was locked out.
+
+SecurityEvent
+| where EventID == 4740
+| summarize StartTime = min(TimeGenerated), EndTime = max(TimeGenerated), LockoutsCount = count() by Activity, Account, TargetSid, TargetDomainName, SourceComputerId, SourceDomainController = Computer
+| extend timestamp = StartTime, AccountCustomEntity = Account, HostCustomEntity = TargetDomainName
+
+//Users with login failure due to Unknown user name or bad password
+
+SecurityEvent
+| where EventID == 4625 and FailureReason == "%%2313"
+| distinct Account
+
+//Users with login failure due but required to change password at next logon
+
+SecurityEvent
+| where EventID == 4624 and SubStatus == "0XC0000224"
+
+//Retrieves all non-UK based logins
+
+SigninLogs
+| extend city_ = tostring(LocationDetails.city)
+| extend state_ = tostring(LocationDetails.state)
+| extend countryOrRegion_ = tostring(LocationDetails.countryOrRegion)
+| where countryOrRegion_ != "UK"
+| distinct TimeGenerated, Identity, city_, state_, countryOrRegion_, IPAddress
+
+//Show each separate login per person and their location and IP
+
+SigninLogs
+| extend city_ = tostring(LocationDetails.city)
+| extend state_ = tostring(LocationDetails.state)
+| extend countryOrRegion_ = tostring(LocationDetails.countryOrRegion)
+| distinct TimeGenerated, Identity, city_, state_, countryOrRegion_, IPAddress
+
