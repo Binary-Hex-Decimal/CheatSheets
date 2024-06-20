@@ -1,0 +1,52 @@
+Robocopy
+/L - Test Mode
+/E - Copy All Files and Folders
+/mov - Move action
+/MIR - Mirror Source to Destination
+/s - copy Subdirectories, but not empty ones.
+/E	copy subdirectories, including Empty ones.
+/j - copy using unbuffered I/O (recommended for large files).
+/R:n - number of Retries on failed copies: default 1 million.
+/W:n - set amount to wait betwen tries
+/MAXAGE 7 - Minimum file age
+/MINAGE 365 - Maximum file age
+/MIN:"File Size" - Minimum file size
+/MAX:"File Size" - Maximum file size
+/XA:SH - Excluded hidden system files
+/COPYALL - Copy all attributes
+PURGE - Delete destination files/dirs that no longer exist in source.
+/COPYALL - COPY ALL file info (equivalent to /COPY:DATSOU).
+/NOCOPY	- COPY NO file info (useful with /PURGE).
+/copy:datxsou - Copy with Data,Attributes,Timestamps,x skip alternate data, security, owner u auditing info.
+/dcopy:datex - Copy with Data,Attributes,Timestamps,EA and skip alternate data.
+/rh:1900-0600 - Set the hours to perform an action.
+/MT:32 - Change the multi-threading speed.
+/log:"File Path and Filename" - Create a new log file.
+/LOG+:"File Path and Filename" - Append Log to existing file.
+/XD "File PAth" "File Path" - Exclude Directories.
+/ZB - use restart able mode; if access denied use Backup mode.
+/XJD - exclude junction points
+/TEE - Display content in cmd window.
+
+EXAMPLES
+
+Perform a Test Copy:
+Robocopy "Source Path" "Destination Path" /L
+
+Perform a copy:
+Robocopy "Source Path" "Destination Path"
+
+Perform a copy keeping all attributes i.e. permissions etc:
+Robocopy "Source Path" "Destination Path" /E /COPYALL
+
+Perform a Move action.
+Robocopy "Source Path" "Destination Path" /move
+
+Perform a Move keeping all attributes i.e. permissions etc:
+Robocopy "Source Path" "Destination Path" /move /E /COPYALL
+
+Mirror Files:
+# Mirror files
+Robocopy "Source Path" "Destination Path" /mir
+
+Robocopy "Source Path" "Destination Path" /MIR /R:0 /W:15 /MT:32 /V /NP /XA:SH /E /ZB /XD "Downloads" "AppData" /LOG:robocopy.log /TEE
