@@ -1,4 +1,6 @@
 find /. -name *."Enter Extension" (Finds all files recursively with the extension you specify)
+i.e
+find -regex -type f ".*\."txt""
 
 chmod 777 “filename” (Sets a file to be executable)
 
