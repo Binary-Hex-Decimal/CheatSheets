@@ -2,6 +2,10 @@ find /. -name *."Enter Extension" (Finds all files recursively with the extensio
 i.e
 find -regex -type f ".*\."txt""
 
+find / -iname "search term"
+
+cp -r “SourcePath” "DestinationPath”
+
 chmod 777 “filename” (Sets a file to be executable)
 
 .\”Filename” /“Enter location to run ”
@@ -30,3 +34,5 @@ vim-cmd vmsvc/power.off “VMID”
 vim-cmd vmsvc/power.reboot “VMID”
 vim-cmd vmsvc/power.shutdown “VMID”
 vim-cmd vmsvc/power.suspend “VMID”
+
+vim-cmd solo/registervm ""path and filename".vmx"
