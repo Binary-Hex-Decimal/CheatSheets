@@ -102,7 +102,10 @@ print(not not False) # False
 
 Strings Manipulators:
 \n # Line break
+print('This is an \nexample of a lione break')
 \t # Tab content
+print('Days\tTopics\tExercises'
+
 print(VariableName.capitalize()) # Captitilize first character#
 print(VariableName.count('y')) # Count occurances of y
 print(VariableName.count('th')) # Count occurances of th
@@ -136,7 +139,114 @@ print(last_three) # hon
 middle_three = language[2:4]
 print(last_three) # tho
 
-Tab:
+Lists:
+    
+Declare Lists
+    
+fruits = ['banana', 'orange', 'mango', 'lemon']                     # list of fruits
 
-print('Days\tTopics\tExercises')
-print('Day 1\t3\t5')
+# Show list
+print('Fruits:', fruits)
+
+# Show number of values in list
+print('Number of fruits:', len(fruits))
+
+# First index
+first_fruit = fruits[0] # we are accessing the first item using its index
+print(first_fruit)      # banana
+
+# Second index
+second_fruit = fruits[1]
+print(second_fruit)     # orange
+
+# Last index
+last_fruit = fruits[3]
+print(last_fruit) # lemon
+
+# Second Last index
+last_fruit = fruits[-1]
+print(last_fruit) # lemon
+
+# List All list items
+all_fruits = fruits[0:4] # it returns all the fruits
+orange_and_mango = fruits[1:3] # it does not include the end index
+
+# Change list value
+fruits = ['banana', 'orange', 'mango', 'lemon'] 
+fruits[0] = 'Avocado' 
+print(fruits)       #  ['avocado', 'orange', 'mango', 'lemon']
+fruits[1] = 'apple'
+print(fruits)       #  ['avocado', 'apple', 'mango', 'lemon']
+last_index = len(fruits) - 1
+fruits[last_index] = 'lime'
+print(fruits)        #  ['avocado', 'apple', 'mango', 'lime']
+
+# checking items
+fruits = ['banana', 'orange', 'mango', 'lemon']
+does_exist = 'banana' in fruits
+print(does_exist)  # True
+does_exist = 'lime' in fruits
+print(does_exist)  # False
+
+# Append
+fruits = ['banana', 'orange', 'mango', 'lemon']
+fruits.append('apple')
+print(fruits)           # ['banana', 'orange', 'mango', 'lemon', 'apple']
+fruits.append('lime')   # ['banana', 'orange', 'mango', 'lemon', 'apple', 'lime]
+print(fruits)
+
+# insert
+fruits = ['banana', 'orange', 'mango', 'lemon']
+fruits.insert(2, 'apple') # insert apple between orange and mango
+print(fruits)           # ['banana', 'orange', 'apple', 'mango', 'lemon']
+fruits.insert(3, 'lime')   # ['banana', 'orange', 'apple', 'mango', 'lime','lemon',]
+print(fruits)
+
+# remove
+fruits = ['banana', 'orange', 'mango', 'lemon']
+fruits.remove('banana')
+print(fruits)  # ['orange', 'mango', 'lemon']
+fruits.remove('lemon')
+print(fruits)  # ['orange', 'mango']
+
+# del 
+fruits = ['banana', 'orange', 'mango', 'lemon']
+del fruits[0]     
+print(fruits)       # ['orange', 'mango', 'lemon']
+
+del fruits[1]     
+print(fruits)       # ['orange', 'lemon']
+del fruits
+print(fruits)       # This should give: NameError: name 'fruits' is not defined
+
+# Copy list
+fruits = ['banana', 'orange', 'mango', 'lemon']
+fruits_copy = fruits.copy()     
+print(fruits_copy)       # ['banana', 'orange', 'mango', 'lemon']
+
+# join
+positive_numbers = [1, 2, 3,4,5]
+zero = [0]
+negative_numbers = [-5,-4,-3,-2,-1]
+
+integers = negative_numbers + zero + positive_numbers
+print(integers)
+
+fruits = ['banana', 'orange', 'mango', 'lemon']
+vegetables = ['Tomato', 'Potato', 'Cabbage','Onion', 'Carrot'] 
+fruits_and_vegetables = fruits + vegetables
+print(fruits_and_vegetables )
+
+# count
+fruits = ['banana', 'orange', 'mango', 'lemon']
+print(fruits.count('orange'))   # 1
+ages = [22, 19, 24, 25, 26, 24, 25, 24]
+print(ages.count(24))           # 3
+
+# sort
+fruits = ['banana', 'orange', 'mango', 'lemon']
+fruits.sort()
+print(fruits) 
+
+fruits.sort(reverse=True)
+print(fruits)
