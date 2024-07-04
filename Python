@@ -1,24 +1,30 @@
+Powershell
+
 Variable Naming Technique:
-------------------------------
+    
 Camel Case:
-variableNameOne = "John"
+variableNameOne = 'John'
 
 Pascal Case
-VariableNameOne = "john"
+VariableNameOne = 'john'
 
-MyVariableName = "John"
-variable_name_one = "John"
+MyVariableName = 'John'
+variable_name_one = 'John'
 
 Variables:
-------------------------------
+    
 Declare Variable:
-VariableName1 = "VariableValue"
+VariableName1 = 'VariableValue'
 VariableName2 = VariableName1
-VariableName3 = VariableName1, VariableName2
-VariableName4, VariableName5, VariableName6 = "1", "2", "3"
+VariableName3 = VariableName1 + VariableName2
+VariableName4, VariableName5, VariableName6 = '1', '2', '3'
+VariableName7 = '''I am a teacher and enjoy teaching.
+I didn't find anything as rewarding as empowering people.
+That is why I created 30 days of python.'''
+
 
 Data Type:
-------------------------------
+
 VariableName = 5
 
 View Data Type:
@@ -26,16 +32,16 @@ print(type(VariableName))
 
 Set Data Type:
 
-VariableName = str("Hello World")	str	
+VariableName = str('Hello World')	str	
 VariableName = int(20)	int	
 VariableName = float(20.5)	float	
 VariableName = complex(1j)	complex	
-VariableName= list(("apple", "banana", "cherry"))	list	
-VariableName= tuple(("apple", "banana", "cherry"))	tuple	
+VariableName= list(('apple', 'banana', 'cherry'))	list	
+VariableName= tuple(('apple', 'banana', 'cherry'))	tuple	
 VariableName= range(6)	range	
-VariableName= dict(name="John", age=36)	dict	
-VariableName= set(("apple", "banana", "cherry"))	set	
-VariableName= frozenset(("apple", "banana", "cherry"))	frozenset	
+VariableName= dict(name='John', age=36)	dict	
+VariableName= set(('apple', 'banana', 'cherry'))	set	
+VariableName= frozenset(('apple', 'banana', 'cherry'))	frozenset	
 VariableName= bool(5)	bool	
 VariableName= bytes(5)	bytes	
 VariableName= bytearray(5)	bytearray	
@@ -43,7 +49,7 @@ VariableName= memoryview(bytes(5))	memoryview
 
 
 Calculations:
-------------------------------
+
 print('Addition', 2 + 3)   # addition(+)
 print('Subtraction', 3 - 1)   # subtraction(-)
 print('Multiplication', 2 * 3)   # multiplication(*)
@@ -55,7 +61,7 @@ print('Division without remiander', 3 // 2)  # division without remainder
 Replace numbers with variable names to calculate variables.
 
 Operators:
-------------------------------
+
 print(3 > 2)     # True, because 3 is greater than 2
 print(3 >= 2)    # True, because 3 is greater than 2
 print(3 < 2)     # False,  because 3 is greater than 2
@@ -73,7 +79,7 @@ print(len('tomato') == len('potato'))  # True
 print(len('python') > len('dragon'))   # False
 
 Boolean:
-------------------------------
+
 print('True == True: ', True == True)
 print('True == False: ', True == False)
 print('False == False:', False == False)
@@ -81,7 +87,7 @@ print('True and True: ', True and True)
 print('True or False:', True or False)
 
 AND, OR and NOT
-------------------------------
+
 print(3 > 2 and 4 > 3) # True - because both statements are true
 print(3 > 2 and 4 < 3) # False - because the second statement is false
 print(3 < 2 and 4 < 3) # False - because both statements are false
@@ -93,3 +99,44 @@ print(not True)      # False - Negation, the not operator turns true to false
 print(not False)     # True
 print(not not True)  # True
 print(not not False) # False
+
+Strings Manipulators:
+\n # Line break
+\t # Tab content
+print(VariableName.capitalize()) # Captitilize first character#
+print(VariableName.count('y')) # Count occurances of y
+print(VariableName.count('th')) # Count occurances of th
+print(VariableName.endswith('on'))   # Does value end with 'on'
+print(VariableName.endswith('tion')) # Does value end with 'tion'
+
+VariableName = 'I am {} {}. I am a {}. I live in {}.'.format(VariableName, VariableName2, VariableName3, VariableName4)
+print(VariableName)
+
+VariableName = 10
+VariableName2 = 3.14
+VariableName3 = VariableName2
+output = 'The area of circle with {} is {}'.format(str(VariableName), str(VariableName3))
+print(output)
+
+language = 'Python'
+first_letter = language[0]
+print(first_letter) # P
+
+second_letter = language[1]
+print(second_letter) # y
+
+last_index = len(language) - 1
+last_letter = language[last_index]
+print(last_letter) # n
+
+first_three = language[0:3] # starts at zero index and up to 3 but not include 3
+print(first_three) # pyt
+last_three = language[3:6]
+print(last_three) # hon
+middle_three = language[2:4]
+print(last_three) # tho
+
+Tab:
+
+print('Days\tTopics\tExercises')
+print('Day 1\t3\t5')
