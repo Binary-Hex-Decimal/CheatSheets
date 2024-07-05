@@ -1,1 +1,1 @@
-netstat -ano | finstr "Process ID"
+netstat -ano | findstr "Process ID"
