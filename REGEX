@@ -85,6 +85,20 @@ Complex: (Should have 1 lowercase letter, 1 uppercase letter, 1 number, 1 specia
 Moderate: (Should have 1 lowercase letter, 1 uppercase letter, 1 number, and be at least 8 characters long)
 /(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z]))^.{8,}$/
 
+/ ^[a-z0-9\.@#\$%&]+$/ (only contains letter [a-z] digits[0-9], special characters(@#$%&))
+
+/ ^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/ (Minimum 8 characters at least 1 Alphabet and 1 Number)
+
+/ ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/ (Minimum 8 characters at least 1 Uppercase Alphabet, 1 Lowercase Alphabet, 1 Number and 1 Special Character)
+
+/ ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,10}/ (Minimum 8 and Maximum 10 characters at least 1 Uppercase Alphabet, 1 Lowercase Alphabet, 1 Number and 1 Special Character)
+
+/ ^[a-zA-Z0-9\s]{7,16}$/ (Minimum length 7 and Maximum length 16 Characters allowed [a–z] [A-Z] [0-9])
+
+
+
+
+
 WEB URL:
 Include http(s) Protocol
 /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#()?&//=]*)/
