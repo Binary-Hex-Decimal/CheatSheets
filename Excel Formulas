@@ -1,0 +1,14 @@
+Trim after a space:
+=TEXTAFTER(A1, " ", -1)
+
+Trim Before a space:
+=TEXTBEFORE(A1, " ", -1)
+
+Count number of words:
+=COUNTA(TEXTSPLIT(TRIM(A1)," "))
+
+Remove a string from a string:
+=SUBSTITUTE(A1,C1,"")
+
+Trim spaces:
+=TRIM(A1)
