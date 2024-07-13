@@ -12,3 +12,15 @@ Remove a string from a string:
 
 Trim spaces:
 =TRIM(A1)
+
+Count the value in brackets in a cell
+=COUNTIF(A1,"")
+
+Count the value in brackets in a range
+=COUNTIF(A1:A10,"")
+
+If the cell equals 1 then display yes
+=IF(A1=1,"y","n")
+
+Trim the last character
+=VALUE(LEFT(A1,LEN(A1)-1))
