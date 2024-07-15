@@ -43,6 +43,7 @@ Replace character with another character.
 =VLOOKUP(A2,worksheet1!B2:H20,6,FALSE)
 =HLOOKUP(B1,B1;E5,2,FALSE)
 =IF(G2<24.9,"Fit,"Unfit")
+=AND(B5>10,B5<20)
 
 Trim after a space:
 =TEXTAFTER(A1, " ", -1)
