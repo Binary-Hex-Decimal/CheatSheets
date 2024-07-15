@@ -1,3 +1,49 @@
+Add all the values in the Range.
+=SUM(C2:C5)
+
+Minimum value in a range.
+=MIN(E2:E5)
+
+Maximum value in a range.
+=MAX(E2:E5)
+
+Average value in a range.
+=AVERAGE(C2:C5) 
+
+Count the number of values in a range.
+=COUNT(E2:E5)
+
+Work out the power.
+=POWER(D2/100,2)
+
+Round up to the nearest multiple.
+=CEILING(F2,1)
+
+Round down to the nearest multiple.
+=FLOOR(F2,1)
+
+Remove empty spaces.
+=TRIM(A4)
+
+Replace character with another character.
+=REPLACE(A2,1,1,"B")
+
+=SUBSTITUTE(A4,"Jacoba","Rahim")
+=LEFT(A2,9)
+=MID(A2,11,6)
+=RIGHT(A2,7)
+=UPPER(A1:F1)
+=LOWER(A1:F1)
+=PROPER(A1:F1)
+=NOW()
+=SECOND(NOW())
+=TODAY()
+=DAY(TODAY())
+=DATEDIF(A2,B2,"d")
+=VLOOKUP(A2,worksheet1!B2:H20,6,FALSE)
+=HLOOKUP(B1,B1;E5,2,FALSE)
+=IF(G2<24.9,"Fit,"Unfit")
+
 Trim after a space:
 =TEXTAFTER(A1, " ", -1)
 
@@ -22,5 +68,3 @@ Count the value in brackets in a range
 If the cell equals 1 then display yes
 =IF(A1=1,"y","n")
 
-Trim the last character
-=VALUE(LEFT(A1,LEN(A1)-1))
