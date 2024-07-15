@@ -13,6 +13,9 @@ Average value in a range.
 Count the number of values in a range.
 =COUNT(E2:E5)
 
+Count the number of unique values.
+=COUNTA(UNIQUE(B6:B16))
+
 Work out the power.
 =POWER(D2/100,2)
 
