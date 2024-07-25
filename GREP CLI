@@ -7,6 +7,8 @@
 Searches a file(s) based on a Keyword and then Excludes Keywords:
 grep --color=always -a -i ""Keyword1$"\|"Keyword2$"\|"Keyword3$"" "Location & Filename" "Location & Filename" | grep -v 'ExcludeKeyword1\|ExcludeKeyword2\|ExcludeKeyword3'
 
+grep --color=always ""KEYWORD1"\|"KEYWORD2"\|"KEYWORD3"" "Location\FILE.EXTENSION" | tr '\n' ' ' | cut -d ":" -f1
+
 Searches for beginning of website:
 Option 1 - grep --color=always -a -i "http://\|https://" "Location & Filename"
 Option 2 - grep -Eo '(http|https)://[^/"]+'
