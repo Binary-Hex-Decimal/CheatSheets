@@ -1,0 +1,17 @@
+Cloud Acquisition:
+
+Azure:
+
+->Virtual Machine Section
+->Select VM
+->Select VMSettings
+->Select VMDisks
+->Select disk and then create snapshot.If mutliple Disks then perform this step as required.
+->Choose Full disk and everything else is left to default
+->Wait till complete
+->Go back to settings of VM and then snapshot export
+->Select VMCreate a link
+->Use azcopy to download the file
+
+Syntax:
+azcopy copy 'Source' 'Destination' --check-md5 nocheck
