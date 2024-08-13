@@ -1,5 +1,3 @@
-Cloud Acquisition:
-
 Azure:
 
 ->Virtual Machine Section
@@ -15,3 +13,101 @@ Azure:
 
 Syntax:
 azcopy copy 'Source' 'Destination' --check-md5 nocheck
+
+AWS:
+
+AMI from Instance:
+
+1, Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+
+2, In the navigation pane, choose Instances.
+
+3, Select the instance from which to create the AMI, and then choose Actions, Image and templates, Create image.
+
+4, On the Create image page, specify the following information:
+
+4.1, For Image name, enter a unique name for the image, up to 127 characters.
+
+4.2, For Image description, enter an optional description of the image, up to 255 characters.
+
+4.3, For No reboot, either keep the Enable check box cleared (the default), or select it.
+
+	If the Enable check box for No reboot is cleared, when Amazon EC2 creates the new AMI, it reboots the instance so that it can take snapshots of the attached volumes while data is at rest, in order to ensure a consistent state.
+
+	If the Enable check box for No reboot is selected, when Amazon EC2 creates the new AMI, it does not shut down and reboot the instance.
+
+	Warning - If you choose to enable No reboot, we can't guarantee the file system integrity of the created image.
+
+4.4, Instance volumes – You can modify the root volume, and add additional Amazon EBS and instance store volumes, as follows:
+
+	The root volume is defined in the first row.
+
+	To change the size of the root volume, for Size, enter the required value.
+
+	If you select Delete on termination, when you terminate the instance created from this AMI, the EBS volume is deleted. If you clear Delete on termination, when you terminate the instance, the EBS volume is not deleted. For
+	more information, see Preserve data when an instance is terminated.
+
+	To add an EBS volume, choose Add volume (which adds a new row). For Storage type, choose EBS, and fill in the fields in the row. When you launch an instance from your new AMI, additional volumes are automatically attached to 	the instance. Empty volumes must be formatted and mounted. Volumes based on a snapshot must be mounted.
+
+	To add an instance store volume, see Add Amazon EC2 instance store volumes to an AMI. When you launch an instance from your new AMI, additional volumes are automatically initialized and mounted. These volumes do not contain 	data from the instance store volumes of the running instance on which you based your AMI.
+
+	Tags – You can tag the AMI and the snapshots with the same tags, or you can tag them with different tags.
+
+	To tag the AMI and the snapshots with the same tags, choose Tag image and snapshots together. The same tags are applied to the AMI and every snapshot that is created.
+
+	To tag the AMI and the snapshots with different tags, choose Tag image and snapshots separately. Different tags are applied to the AMI and the snapshots that are created. However, all the snapshots get the same tags; you can't 	tag each snapshot with a different tag.
+
+	To add a tag, choose Add tag, and enter the key and value for the tag. Repeat for each tag.
+
+	When you're ready to create your AMI, choose Create image.
+
+5, To view the status of your AMI while it is being created:
+
+	In the navigation pane, choose AMIs.
+
+	Set the filter to Owned by me, and find your AMI in the list.
+
+	Initially, the status is pending but should change to available after a few minutes.
+
+6, (Optional) To view the snapshot that was created for the new AMI:
+
+	Note the ID of your AMI that you located in the previous step.
+
+	In the navigation pane, choose Snapshots.
+
+	Set the filter to Owned by me, and then find the snapshot with the new AMI ID in the Description column. 
+	When you launch an instance from this AMI, Amazon EC2 uses this snapshot to create its root device volume.
+
+Create an AMI from a snapshot:
+
+1, Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+
+2, In the navigation pane, choose Snapshots.
+
+3, Select the snapshot from which to create the AMI, and then choose Actions, Create image from snapshot.
+
+4, On the Create image from snapshot page, specify the following information:
+
+	For Image name, enter a descriptive name for the image.
+
+	For Description, enter a brief description for the image.
+
+	For Architecture, choose the image architecture. Choose i386 for 32-bit, x86_64 for 64-bit, arm64 for 64-bit ARM, or x86_64 for 64-bit macOS.
+
+	For Root device name, enter the device name to use for the root device volume. For more information, see Device names for volumes on Amazon EC2 instances.
+
+	For Virtualization type, choose the virtualization type to be used by instances launched from this AMI. For more information, see Compare AMI virtualization types in Amazon EC2.
+
+	(For paravirtual virtualization only) For Kernel ID, select the operating system kernel for the image. If you're using a snapshot of the root device volume of an instance, select the same kernel ID as the original instance. If 	you're unsure, use the default kernel.
+
+	(For paravirtual virtualization only) For RAM disk ID, select the RAM disk for the image. If you select a specific kernel, you may need to select a specific RAM disk with the drivers to support it.
+
+	For Boot mode, choose the boot mode for the image, or choose Use default so that when an instance is launched with this AMI, it boots with the boot mode supported by the instance type. For more information, see Set the boot 	mode of an Amazon EC2 AMI.
+
+	(Optional) Under Block device mappings, customize the root volume and add additional data volumes.
+
+	For each volume, you can specify the size, type, performance characteristics, the behavior of delete on termination, and encryption status. For the root volume, the size can't be smaller than the size of the snapshot. For 	volume type, 	General Purpose SSD gp3 is the default selection.
+
+	(Optional) Under Tags, you can add one or more tags to the new AMI. To add a tag, choose Add tag, and enter the key and value for the tag. Repeat for each tag.
+
+	When you're ready to create your AMI, choose Create image.
