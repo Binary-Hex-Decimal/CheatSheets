@@ -44,3 +44,18 @@ AzCopy includes several advanced commands and flags that allow fine-tuning your 
 --include-pattern: Include only these files when copying, syncing, or removing.
 --exclude-pattern: Exclude these files.
 --overwrite: Control overwriting behavior.
+
+Blob to Blob
+azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'
+
+Copy a directory
+azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive
+
+Copy a container
+azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive
+
+Copy containers, directories, and blobs
+azcopy copy 'https://mysourceaccount.blob.core.windows.net/' 'https://mydestinationaccount.blob.core.windows.net' --recursive
+
+On-Prem to Azure Blob
+azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
