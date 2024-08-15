@@ -1,0 +1,6 @@
+SHIFT-F10 at Windows install setup.
+
+REG ADD HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig /t REG_DWORD /v BypassTPMCheck /d "1"
+REG ADD HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig /t REG_DWORD /v BypassRAMCheck /d "1"
+REG ADD HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig /t REG_DWORD /v BypassSecureBootCheck /d "1"
+REG QUERY HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig
