@@ -1,0 +1,43 @@
+Firewall – Overview
+•	Produce a high level network diagram.
+•	Identify Subnets.
+•	Group subnets into zones.
+•	Primary and Secondary firewalls in a clust or HA (High availability) as redundancy.
+Firewall – Rules
+•	Disable Insecure protocols telnet, ssh, snmp and ftp. Were they cannot be disabled then redule the attack service by minimising access.
+•	Enable rule to hide firewall from network scans i.e Block ICMP.
+•	Avoid rule for destination and source that are set to any.
+•	impliment Deny by defualt rule.
+•	Good naming and descriptions when implementing firewall rules.
+•	SAN checklist to Restrict/block the following ports:
+Service	Port	Port number
+DNS Zone Transfers	TCP	53
+TFTP Daemon	UDP	69
+Link	TCP 	87
+BSD Unix	TCP	512-514
+Small service	TCP and UDP	20 and below
+SMTP (except external mail relays)	TCP	25
+NetBIOS in Windows NT	TCP and UDP	135
+NetBIOS in Windows NT	UDP	137 and 138
+IMAP	TCP	143
+LDAP	TCP and UDP	389
+Syslog	UDP	514
+Cisco AUX port	TCP	2001
+Cisco AUX port (Stream)	TCP	4001
+Cisco AUX port (binary) 	TCP	6001
+Common high order HTTP ports	TCP	8000, 8080, and 8888
+
+ 
+Firewall – Management
+•	Periodic backups as a snapshot of configuration.
+•	Periodic updates to firewall software and ad-hoc updates for known vulnerabilities.
+•	keep management access to a minimum.
+•	Use non-standard accounts and passwords.
+•	Password complexity.
+•	Initiate MFA.
+•	Role-Based access i.e assisgning user to groups etc.
+Firewall – Audit
+•	Change Management to apply to Configuration changes
+•	Enable system auditing and method of passing logs these to a centralised location i.e Siem.
+•	Aduit logs periodiclly  to access threat landscape.
+•	Review and test firewall rules periodically.
