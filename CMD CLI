@@ -25,6 +25,12 @@ DIR /A:H
 Search for file ending in
 dir /s *."extension"
 
+dir “filename.doc” /s /p (Search computer for specific filename)
+dir “filename”* /s /p (Search computer for specific filename that starts with filename)
+dir /b /s *.”file extension” (list all extensions that start with the specific extention)
+dir /b /s read *.” file extension” (list all files that start with with read with specified extension.
+dir /b /s “ready” *.* (List all files beginning with ready and any file extension)
+
 File/Folder Operations:
 ....................
 Move a file to a new folder:
