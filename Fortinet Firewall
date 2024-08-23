@@ -1,0 +1,87 @@
+“Show/Get” sys status	Show status summary.
+Dia sys flash list	Show contents of flash memory with Active next to active firmware.
+“Show/Get” get system interface	Show all Interfaces.
+get system interface physical	Show list of physical interfaces and details.
+Static
+Config sys interface
+Edit “interface name”
+Set mode static
+Set allow ssh ping https 
+Set ip x.x.x.x.x|x.x.x.x.x
+End
+
+DHCP
+Config sys interface
+Edit “interface name”
+Set mode dhcp
+Set allow ssh ping https 
+End	Configure interface with static or dhcp.
+show system dhcp/dhcp6 server	Show DHCP configuration.
+execute dhcp/dhcp6 lease-list “interface
+name”	Show all IP allocation via DHCP.
+	
+config system interface
+    edit "interface name”
+        set status “up/down”
+    next
+end	Configure an interface to be up or down.
+config system interface
+    edit "VLAN name"
+        set vdom "root"
+        set ip “10.1.10.254” “255.255.255.0”
+        set allowaccess “ping” “https” “ssh” “http”
+        set type vlan
+        set device-identification enable
+        set role “lan”
+        set snmp-index 15
+        set interface "Interface Name"
+        set vlanid 10
+    next
+end	Configure a VLAN to  an interface.
+config router static
+    edit 1
+        set status enable
+        set dst “10.20.30.0” “255.255.255.0”
+        set gateway “192.168.179.2”
+        set distance 10
+        set weight 0
+        set priority 0
+        set device "wan1"
+        set comment ''
+        set blackhole disable
+        set dynamic-gateway disable
+        set link-monitor-exempt disable
+        set bfd disable
+    next
+end	Configure a static router.
+get router info routing-table all	Show routing table.
+diag firewall proute list	Display the Policy Routes
+
+show full-configuration (Show full configuration display)
+get router info routing-table detail (Get detailed routing info)
+show firewall policy (Show current firewall policy)
+get system status (Show firmeware and Bios versions) 
+get system interface physical (Check interface status)
+get system arp (Display ARP table)
+end/abort (Save Configuration/Don't Save Configuration & exit)
+
+config firewall policy (Enter firewall configuration)
+show (Shows all firewall policies)
+end (Save and Exit)
+
+config firewall policy
+edit 555
+set name "test"
+set srcintf "vlan10"
+set dstintf "port 5"
+set srcadr "xxxx"  "xxxx"  "xxx"
+set action accept
+set schedule "always"
+set servie "HTTP" "ICMP_ANY"
+end
+
+config firwall policy
+delete “Enter policy name” 
+end
+
+exec backup config tftp “conf/test-fw-01_20180913.conf” “xxx.xxx.xxx.xxx”
