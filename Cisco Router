@@ -1,0 +1,46 @@
+"RouterName”(config)#Enable “Password”
+"RouterName”(config)#Config terminal i.e. conf t
+"RouterName”(config)#show running-config
+"RouterName”(config)#show ip interface brief 
+"RouterName”(config)#show interface “GigabitEthernet8” summary/detailed
+
+Description Names:-
+"RouterName”(config)#interface GigabitEthernet8
+"RouterName”(config)#description WAN to London
+"RouterName”(config)#end
+
+Description Names Remove:-
+"RouterName”(config)#interface GigabitEthernet8
+"RouterName”(config)#no description
+"RouterName”(config)#end
+ 
+Cisco ASA Router– Create DHCP Pool
+Basics
+"RouterName”(config)#hostname “hardwarename”
+"RouterName”(config)#copy running-config startup-config
+
+Current Leased Addresses:-
+"RouterName”(config)#show ip dhcp binding
+
+Information about currently configured DHCP pools:-
+"RouterName”(config)#show ip dhcp pool
+
+Create DHCP Pool
+"RouterName”(config)#ip dhcp excluded-address "192.168.0.1" "192.168.0.50"
+"RouterName”(config)#ip dhcp pool "DHCPPOOLHOMELAB"
+"RouterName”(config)#network "192.168.0.0" "255.255.255.0"
+"RouterName”(config)#default-router "192.168.0.1"
+"RouterName”(config)#dns-server "192.168.0.1"
+
+Create DNS
+"RouterName”(config)# dns"192.168.0.0" "255.255.255.0"
+
+Cisco ASA Router-Upgrade Firmware
+This requires setting up an ftp server i.e Xlight FTP server and setting a storage location.
+Show flash
+
+"RouterName”(config)#copy ftp://”test”:”test”@”192.168.1.31//backup/c800-universalk9-mz.SPA.159-3.M8.bin” flash-filesystem
+Cisco ASA Router-VLAN
+"RouterName”(config)#show vlan-switch brief or show vlan
+"RouterName”(config)#interface vlan “VLAN1”
+"RouterName”(config)#ip address [xxx.xxx.xxx.xxx] [xxx.xxx.xxx.xxx]
