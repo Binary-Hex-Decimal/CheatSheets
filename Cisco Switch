@@ -1,0 +1,45 @@
+Cisco Switch– Create VLAN Port
+"RouterName”(config)#vlan “number”
+"RouterName”(config)#name “VLAN Name”
+"RouterName”(config)#end
+
+Cisco Switch– Assign VLAN Port
+
+"RouterName”(config)#Int “Interfacename”
+"RouterName”(config)# switchport mode access/trunk
+"RouterName”(config)# switchport access “vlan 2”
+"RouterName”(config)#end
+
+Cisco Switch– Assign Ip Address
+"RouterName”(config)#int “Interfacename”
+Option 1 – Assign via DHCP
+"RouterName”(config)#Ip address DHCP 
+Option 2 – Assign by creating DHCP Pool
+"RouterName”(config)#Ip dhcp pool “Pool Name”
+"RouterName”(config)#Network x.x.x.x x.x.x.x
+"RouterName”(config)#Domain-name “enter domain name”
+"RouterName”(config)#Dns-server “x.x.x.x x.x.x.x”
+
+Save the running config to an FTP location:
+copy running-config "ftp://""test":"test"@"192.168.0.239""//backup"
+
+Copy firmware from a ftp location:
+copy ftp://”test”:”test”@”192.168.0.239//backup/c3560c405ex-universalk9-mz.152-2.E10.bin” flash:
+
+Show flash directory:
+show flash:
+
+Copy file from Flash:
+copy flash: ftp://"test":"test"@"192.168.0.239"//backup
+"Source Filename"
+"destination filename"
+
+
+Set device to load specific file:
+"RouterName”(config)# “boot flash:c3560c405ex-universalk9-mz.152-2.E10.bin”
+"RouterName”(config)# “copy run start”
+Clock Config:
+show clock
+set clock
+clock set "hh mm ss dd mm yyyy"
+clock timezone GMT 0
