@@ -1,0 +1,145 @@
+Cisco ASA Firewall – Show Commands
+•	Enable (Start configuration)
+•	Configure terminal (Enter privileged mode)
+•	Global configuration (Enter Global configuration mode)
+
+Cisco ASA Firewall – General Firmware
+•	show version (Show system hardware, software)
+•	show running-config (Show the currently running configuration)
+•	show startup-config (Show the start-up config)
+•	copy run start/write memory – (Save the running config)
+
+Cisco ASA Firewall – Interfaces
+•	show interfaces  (Show all interfaces information)
+•	Show interface summary (Show all interfaces summary information)
+•	Show interface detailed management
+
+Cisco ASA Firewall – Ports
+•	show port summary (Show summary of all ports)
+•	show port xx (Show information regarding a specific port)
+
+Cisco ASA Firewall – Config Commands
+•	config interface address “IP_address, gateway, Management, interface-name, virtual” xxx.xxx.xxx.xxx/xx “Descripton” (Configure interface)
+
+Cisco ASA Firewall – VLANS 
+•	Show VLAN (Show information and status of VLANS)
+•	VLAN “VLAN Number”  (Create a new VLAN)
+
+Cisco ASA Firewall – VLANS name 
+•	interface vlan “VLAN Number” 
+•	name “VLAN name” 
+•	commit 
+•	end
+
+Cisco ASA Firewall – VLANS to Port
+•	Config terminal
+•	Interface "port number or xx-xx for range “
+•	switchport Access vlan "vlan id"
+
+Cisco ASA Firewall – VLAN Port default
+•	No switchport access vlan
+
+Cisco ASA Firewall – Trunk port
+•	Configure terminal
+•	Interface "port number or xx-xx for range”
+•	switchport trunk allowed vlan “all, none, add vlan-list”
+
+Cisco ASA Firewall – Trunk port Default
+•	No switchport trunk allowed vlan
+
+Cisco ASA Firewall – Descriptions Port Commands
+•	Interface “Interface ID”
+•	Description ”Add a description”
+
+Cisco ASA Firewall – Descriptions VLAN
+•	Interface vlan “VLAN number”
+•	Name “VLAN name”
+•	commit
+
+Cisco ASA Firewall – Password change
+•	Show run | i username (Show all users)
+•	Username “some user” password “some password”  role “admin” (create new password for specified user)
+•	enable password "xxxxxxxxxxxxxxxx” (Sets a specified password for enable)
+
+ 
+Cisco ASA Firewall– Firewall Rules
+"RouterName”(config)#show ip access-lists “Shows a list of access lists”
+"RouterName”(config)#ip access-list “ACL name” “permit/deny” “192.168.0.0” “ 192.168.1.0”
+
+Cisco ASA Firewall – Create Firewall Rule
+"RouterName”(config)#show ip access-lists “Shows a list of access lists”
+"RouterName”(config)#ip access-list standard/extended “1” “select ACL name”
+"RouterName”(config)#ip access-list “ACL name” “permit/deny” “192.168.0.0” “ 192.168.1.0” “create a permit of deny entry” 
+"RouterName”(config)#no”10 permit ip any any “delete the exact specific sub acl”
+
+Structure:
+access-list “access_list_name” extended {deny | permit} protocol “source_address” “mask” [source_port] “dest_address” “mask” [ dest_port]
+
+Example 1
+Allow only http traffic from inside network 10.0.0.0/24 to outside internet.
+"RouterName”(config)# access-list “HTTP-ONLY” extended permit tcp 10.0.0.0 255.255.255.0 any eq 80
+"RouterName”(config)# access-group “HTTP-ONLY” in interface inside
+
+Example 2
+Deny telnet traffic from host 10.1.1.1 to host 10.2.2.2 and allow everything else.
+ciscoasa(config)# access-list “DENY-TELNET” extended deny “udp/tcp” host “10.1.1.1” host “10.2.2.2” eq “23”
+ciscoasa(config)# access-list “DENY-TELNET” extended “permit” ip host “10.1.1.1” host “10.2.2.2”
+ciscoasa(config)# access-group “DENY-TELNET” in interface inside
+ 
+Example 3
+The example below will deny ALL TCP traffic from our internal network 192.168.1.0/24 towards the external network 200.1.1.0/24.
+Also, it will deny HTTP traffic (port 80) from our internal network to the external host 210.1.1.1. All other traffic will be permitted from inside.
+
+ciscoasa(config)# access-list “INSIDE_IN” extended “deny” “tcp” “192.168.1.0” “255.255.255.0” “200.1.1.0” “255.255.255.0”
+ciscoasa(config)# access-list “INSIDE_IN” extended “deny” “tcp” “192.168.1.0” “255.255.255.0” host “210.1.1.1” eq “80”
+ciscoasa(config)# access-list “INSIDE_IN” extended permit ip “any” “any”
+ciscoasa(config)# access-group “INSIDE_IN” in interface inside
+
+Example 4
+Another popular example is an ACL applied to the “outside” interface for allowing HTTP traffic to reach a web server protected by the firewall.
+Usually the servers which are publicly accessible from the Internet are placed in a DMZ security zone (not in the internal protected zone). 
+In the example below, we have a webserver (with IP 50.50.50.1) placed in DMZ zone and we want to allow traffic from Internet (denoted as “any” in the ACL) to reach this server at port 443 (HTTPs).
+
+ciscoasa(config)# access-list “OUTSIDE_IN” extended permit “tcp” “any” host “50.50.50.1” eq “443”
+ciscoasa(config)# access-group “OUTSIDE_IN” in interface outside
+
+Although the webserver is placed in a DMZ zone, the access-list is applied to the outside interface of the ASA because this is where the traffic comes in.
+
+ 
+Example 5
+Let’s now see another popular example which uses “object groups” to reference a collection of multiple hosts in an ACL. 
+
+Assume we have 4 Web servers in a DMZ zone and we want to allow access to those servers from the Internet. We can create a “network object group” and put all servers inside this logical group. Then we can use this object group in the ACL instead of using each host individually.
+
+! First create the network object group
+ciscoasa(config)# object-group network DMZ_SERVERS
+ciscoasa(config-network-object-group)# network-object host 192.168.1.10
+ciscoasa(config-network-object-group)# network-object host 192.168.1.20
+ciscoasa(config-network-object-group)# network-object host 192.168.1.30
+ciscoasa(config-network-object-group)# network-object host 192.168.1.40
+
+! Now use the above object in the ACL
+ciscoasa(config)# access-list ACCESS_TO_DMZ extended permit tcp any object-group DMZ_SERVERS eq 80
+ciscoasa(config)# access-list ACCESS_TO_DMZ extended permit tcp any object-group DMZ_SERVERS eq 443
+
+!Apply the ACL to the outside interface
+ciscoasa(config)# access-group ACCESS_TO_DMZ in interface outside
+
+ 
+Example 6
+Following from the example above, let’s combine “network object groups” with “service object groups”. The latter, is used to group TCP or UDP port numbers and use it in an ACL.
+
+Assume we have the same  “network object group” as above with name “DMZ_SERVERS”.  Let’s now create a “service object group” with ports 80 and 443.
+
+! Create the service object group
+ciscoasa(config)# object-group service WEB_PORTS tcp
+ciscoasa(config-service)# port-object eq http
+ciscoasa(config-service)# port-object eq https
+
+! Now use the above objects in the ACL
+ciscoasa(config)# access-list ACCESS_TO_DMZ extended permit tcp any object-group DMZ_SERVERS object-group WEB_PORTS
+
+!Apply the ACL to the outside interface
+ciscoasa(config)# access-group ACCESS_TO_DMZ in interface outside
+
+The advantage of using object groups (for both network hosts and service ports) is that you can just add or remove entries within the object group without having to change anything on the ACL.
