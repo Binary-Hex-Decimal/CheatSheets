@@ -1,0 +1,9 @@
+Dcdiag /s:”dc_name” /q – run against specified domain showing only errors.
+Dcdiag – Runs against local machine
+dcdiag /q /e - Runs against all domains and showing only errors.
+Repadmin /replsummary
+Repadmin /Queue
+Repadmin /Showrepl
+Repadmin /syncall
+Repadmin /KCC
+Repadmin /replicate
