@@ -1,3 +1,23 @@
+Backup ESXI Config
+--------------------
+Step2- vim-cmd hostsvc/firmware/backup_config
+
+Will be saved in "/scratch/downloads".
+
+Use WNSCP to download config or
+xxx.xxx.xxx.xxx/scratch/downloads
+
+Restore Backup ESXI Config
+--------------------
+Same Version and Build Number required
+
+Copy backup file to "/tmp/"configBundle.tgz""
+
+Then run the following commands
+
+vim-cmd hostsvc/maintenance_mode_enter
+vim-cmd hostsvc/firmware/restore_config /tmp/configBundle.tgz
+
 find /. -name *."Enter Extension" (Finds all files recursively with the extension you specify)
 i.e
 find -regex -type f ".*\."txt""
