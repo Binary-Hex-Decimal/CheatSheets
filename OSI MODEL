@@ -1,0 +1,32 @@
+OSCI Layer
+Physical Layer 1:
+contains the infrastructure that makes communication on networks possible.
+It defines the electrical, mechanical, procedural, and functional specifications for activating, maintaining, and deactivating physical links between network devices.
+
+Data Link Layer 2:
+The Data Link Layer allows nodes to communicate with each other within a local area network. The foundations of line discipline, flow control, and error control are established in this layer.
+
+Network Layer 3:
+The Network Layer allows nodes to connect to the Internet and send information across different networks.
+
+Transport Layer 4:
+The Transport Layer provides end-to-end transmission of a message by segmenting a message into multiple data packets; the layer supports connection-oriented and connectionless communication.
+
+Session Layer 5:
+The Session Layer initiates, maintains, and terminates connections between two end-user applications. It responds to requests from the presentation layer and issues requests to the transport layer.
+
+Presentation Layer 6:
+The Presentation Layer formats and encrypts data.
+
+Application Layer 7:
+The Application Layer owns the services and functions that end-user applications need to work. It does not include the applications themselves.
+
+OSI Layer Ports
+Application Layer 7
+HTTP (80), HTTP (443), FTP (20), SFTP (22), SSH (22), SMTP (25), POP3 (110), DNS (53), SNMP (161), DHCP (67, 68), NTP (123/udp), LDAP (389)
+Presentation Layer 6
+SSL (443), TLS (443)
+Transport Layer 4
+TPC, UDP
+Network Layer 3
+IP, ICMP, IPSEC
