@@ -86,3 +86,42 @@ Cron Scheduled job sample
 
 Runs a bash script at the Date/Time specififed
 i.e 45 23 * * 6 /home/oracle/scripts/export_dump.sh
+
+Create a script
+
+sudo nano /usr/local/bin/Hello_FOSSLinux.sh
+
+Copy the following to the file
+
+"
+#!/bin/bash
+echo "Hello, FOSSLinux!"
+"
+
+input sudo chmod +x /usr/local/bin/Hello_FOSSLinux.sh to make the script executable
+
+sudo nano /etc/systemd/system/FOSSLinux.service to edit file
+
+"
+[Unit]
+Description=FOSSLinux Service
+
+[Service]
+ExecStart=/usr/local/bin/Hello_FOSSLinux.sh
+
+[Install]
+WantedBy=multi-user.target
+"
+
+[Unit]
+Description=FOSSLinux Service
+
+[Service]
+ExecStart=/usr/local/bin/Hello_FOSSLinux.sh
+
+[Install]
+WantedBy=multi-user.target to reload
+
+systemctl start FOSSLinux
+
+systemctl enable FOSSLinux
