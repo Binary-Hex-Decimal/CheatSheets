@@ -50,3 +50,39 @@ chmod u+rwx "file"
 -Remove Read/Write and Execute permissions. 
 chmod go-w [file_name]
 
+List of processes
+ps aux
+
+List and search for a process name
+ps aux | grep "process name"
+
+Stop a running process by process ID
+kill -9 "5161"
+
+Show hostname
+hostname
+
+Show IP
+hostname -I
+
+download file from location
+wget "IP/hostname/website"
+
+List Cron scheduled jobs
+crontab -l
+
+Edit Cron scheduled job
+crontab -e
+
+Cron Scheduled job sample
+
+# * * * * * <command to execute>
+# | | | | |
+# | | | | day of the week (0–6) (Sunday to Saturday; 
+# | | | month (1–12)             7 is also Sunday on some systems)
+# | | day of the month (1–31)
+# | hour (0–23)
+# minute (0–59)
+
+Runs a bash script at the Date/Time specififed
+i.e 45 23 * * 6 /home/oracle/scripts/export_dump.sh
