@@ -8,7 +8,7 @@ cat "file" | grep " " | cut -d " " -f 4 | tr -d "value to remove"
 ipsweep.sh
 
 Execute:
-./ipsweep.sh 192.168.4
+./ipsweep.sh 192.168.4 > output.tx
 
 Code:
 !/bin/bash
