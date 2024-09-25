@@ -22,3 +22,5 @@ ping -c $1.$ip" | grep "Value" | cut -d " " -f 4 | tr -d "value to remove"  &
 done
 fi
 
+Take a list of IP and run nmao
+for ip in $(cat output.txt); do nmap $ip; done
