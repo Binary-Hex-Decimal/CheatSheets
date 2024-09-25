@@ -9,10 +9,16 @@ ipsweep.sh
 
 Execute:
 ./ipsweep.sh 192.168.4
+
 Code:
 !/bin/bash
+if [ "$1" == "" ]
+then
+echo "you forgot an IP address!"
+echo "Syntax: ./ipsweep.sh 192.168.4"
+else
 for ip in `sequence 1 254`; do
 ping -c $1.$ip" | grep "Value" | cut -d " " -f 4 | tr -d "value to remove"  &
 done
-
+fi
 
