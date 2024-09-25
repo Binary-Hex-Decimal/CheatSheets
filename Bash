@@ -1,0 +1,18 @@
+-d = delimeter
+-f = feild
+4 = nth value
+
+Cat a file for a space and keep the 4th value after the 4th space and remove any trailing value with tr.
+cat "file" | grep " " | cut -d " " -f 4 | tr -d "value to remove"
+
+ipsweep.sh
+
+Execute:
+./ipsweep.sh 192.168.4
+Code:
+!/bin/bash
+for ip in `sequence 1 254`; do
+ping -c $1.$ip" | grep "Value" | cut -d " " -f 4 | tr -d "value to remove"  &
+done
+
+
