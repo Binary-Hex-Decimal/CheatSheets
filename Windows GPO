@@ -1,0 +1,27 @@
+View Applied GPOs:
+gpresult /r
+
+View Applied GPOs based on username:
+gpresult /r /user username
+
+Export GPO report:
+gpresult /h path_to_report\gp_report.html
+
+
+Export GPO report based on username:
+gpresult /h /user username path_to_report\gpreport.html
+
+GPUdate on remote computer:
+Invoke-GPUpdate -Computer "DOMAIN\COMP01"
+
+Run Report on all GPOs:
+Get-GPOReport -All -ReportType HTML -Path "C:\tmp\AllGPOs.html"
+
+Obtain specific GPO:
+Get-GPO -Name "screenaver"
+
+vie GPO based on GUID:
+Get-GPO -Guid "guid here"
+
+Export GPO based on GUID:
+Get-GPOReport -Guid "guid here" -ReportType HTML -Path "C:\GPO.html"
