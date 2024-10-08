@@ -1,3 +1,27 @@
+Export/Import Pre-Requisite
+Microsoft Security Compliance Toolkit i,e LGPO
+Copy LGPO to C:Temp
+
+Export:
+lgpo.exe /b C:\Temp /n “"Hostname"_GPO_BACKUP”
+
+Parse to txt file:
+MACINE|LGPO.exe /parse /m C:\Temp\LGPO_Backup\DomainSysvol\GPO\Machine\registry.pol >> C:\Temp\lgpo.txt
+USER|LGPO.exe /parse /m C:\Temp\LGPO_Backup\DomainSysvol\GPO\User\registry.pol >> C:\Temp\lgpo.txt
+
+Any GPOs not needed can be removed
+To reset a GPO to un configured add a DELTE. i.e
+
+"
+Computer
+Software\Policies\Microsoft\Windows\WindowsUpdate
+WUStatusServer
+DELETE
+"
+
+Import:
+LGPO.exe /t C:\Temp\lgpo.txt
+
 View Applied GPOs:
 gpresult /r
 
@@ -6,7 +30,6 @@ gpresult /r /user username
 
 Export GPO report:
 gpresult /h path_to_report\gp_report.html
-
 
 Export GPO report based on username:
 gpresult /h /user username path_to_report\gpreport.html
