@@ -1,34 +1,34 @@
-Add all the values in the Range.
+Add all the values in the Range:
 =SUM(C2:C5)
 
-Minimum value in a range.
+Minimum value in a range:
 =MIN(E2:E5)
 
-Maximum value in a range.
+Maximum value in a range:
 =MAX(E2:E5)
 
-Average value in a range.
+Average value in a range:
 =AVERAGE(C2:C5) 
 
-Count the number of values in a range.
+Count the number of values in a range:
 =COUNT(E2:E5)
 
-Count the number of unique values.
+Count the number of unique values:
 =COUNTA(UNIQUE(B6:B16))
 
-Work out the power.
+Work out the power:
 =POWER(D2/100,2)
 
-Round up to the nearest multiple.
+Round up to the nearest multiple:
 =CEILING(F2,1)
 
-Round down to the nearest multiple.
+Round down to the nearest multiple:
 =FLOOR(F2,1)
 
-Remove empty spaces.
+Remove empty spaces:
 =TRIM(A4)
 
-Replace character with another character.
+Replace character with another character:
 =REPLACE(A2,1,1,"B")
 
 =SUBSTITUTE(A4,"Jacoba","Rahim")
@@ -63,12 +63,12 @@ Remove a string from a string:
 Trim spaces:
 =TRIM(A1)
 
-Count the value in brackets in a cell
+Count the value in brackets in a cell:
 =COUNTIF(A1,"")
 
-Count the value in brackets in a range
+Count the value in brackets in a range:
 =COUNTIF(A1:A10,"")
 
-If the cell equals 1 then display yes
+If the cell equals 1 then display yes:
 =IF(A1=1,"y","n")
 
