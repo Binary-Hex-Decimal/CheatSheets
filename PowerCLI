@@ -1,107 +1,73 @@
 1. Connect-VIServer: How to connect to vCenter
 
-To manage VMware vSphere, you need to connect to your vCenter server first, run the command:
-
 Connect-VIServer -Server [server name] -Protocol [http] -User [user name] -Password [password]
 
 2. Get-VMHost: How to retrieve host information
-
-Get-VMHost is used to retrieve your host information. To view all hosts on the vCenter Server you connected, run the command:
 
 Get-VMHost
 
 3. Get-VM: How to retrieve VM information
 
-Get-VM is the most basic cmdlet to retrieve VM information. To list all VMs on your connected vCenter and their basic information, run the command:
-
 Get-VM
-
-As you can see, this command only retrieves Name, PowerState, NumCPUs, and MemoryGB properties by default.
-
-To view more information of a specific VM on the vCenter, run the command:
-
+or
 Get-VM -Name [vmname] | Format-List
-
 
 Get-VM Format-List
 
 4. Start-VM & Stop-VM: How to start and stop VM
 
-To start a specific VM on connected vCenter, run the command:
-
+To start:
 Start-VM ‑VM [vmname]
 
-To power off the VM, run the command:
-
+To Stop:
 Stop-VM ‑VM [vmname]
 
 5. New-VM: How to create new VM
 
-New-VM cmdlet is used to create new VM on the connected server.
-
-Using the following command, you can create a new blank VM with default settings, which you need to deploy the OS later:
-
 New-VM -Name [vmname] -VMHost [hostname]
 
-Except for creating new VMs, you can also use VMware vSphere PowerCLI commands to create new datacenter or new folder.
+  To create a new folder, the basic syntax is:
 
-To create a new folder, the basic syntax is:
+  New-Folder -Name [folder name]
 
-New-Folder -Name [folder name]
+  To get the inventory root folder and create a new folder in it:
 
-To get the inventory root folder and create a new folder in it.
+  $folder = Get-Folder -NoRecursion | New-Folder -Name [folder name]
 
-$folder = Get-Folder -NoRecursion | New-Folder -Name [folder name]
+  To create a new datacenter in the folder that is specified by the -Location parameter:
 
-To create a new datacenter in the folder that is specified by the -Location parameter:
-
-New-Datacenter -Location $folder -Name [datacenter name]
+  New-Datacenter -Location $folder -Name [datacenter name]
 
 6. Move-VM: How to move VM to another location
 
-Move-VM command allows you to move single or multiple VMs from one host or datastore to another.
+  To live migrate a single VM to another host, run the command:
+  Move-VM -VM [vmname] -Destination [hostname]
 
-To live migrate a single VM to another host, run the command:
+  To live migrate a single VM to another datastore, run the command:
+  Move-VM -VM [vmname] -Datastore [datastore name]
 
-Move-VM -VM [vmname] -Destination [hostname]
-
-To live migrate a single VM to another datastore, run the command:
-
-Move-VM -VM [vmname] -Datastore [datastore name]
-
-To move all VMs from one host to another host, run the command:
-
-Get-VMHost [hostname] | Get-VM | Move-VM -Destination (Get-VMHost [hostname])
+  To move all VMs from one host to another host, run the command:
+  Get-VMHost [hostname] | Get-VM | Move-VM -Destination (Get-VMHost [hostname])
 
 7. New-Snapshot: How to take VM snapshot
 
-VMware snapshot is a convenient quick failsafe measure for VMs. There are also many VMware PowerCLI commands that can help you to quickly create and manage your VMware snapshots.
-
 To create a new snapshot of the specified VM, the basic syntax is:
-
 New-Snapshot -VM [vmname] -Name [snapshot name]
 
 To create a new snapshot of the powered-on VM and preserves its memory state:
-
 New-Snapshot ‑VM [vmname] ‑Name [snapshot name] -Description [description] ‑Memory $true
 
 To view all the snapshot of the specified VM:
-
 Get-Snapshot -VM [vmname]
-
-
+or
 Get-Snapshot
 
 8. -ToTemplate: How to convert VM to template
 
-Create multiple VMs from a template is a common operation using VMware PowerCLI. Before you can do so, you need an available template. You can use ToTemplate command to convert VM to template
-
 To convert a VM to template, run the command:
-
 Set-VM -ToTemplate -Confirm:$false
 
 To retrieve all VM templates in the specified datacenter:
-
 Get-Template -Location [datacenter]
 
 9. Invoke-VMScript: How to run script easier
@@ -109,39 +75,23 @@ Get-Template -Location [datacenter]
 If your network connection to a VM is lost, or if you need to automate tasks on single or more VMs, Invoke-VMScript can send commands directly to the VM without the need for a normal WinRM or SSH connectivity. For example:
 
 Runs a PowerShell script. In PowerShell, to access environment variables, you must use the following syntax: $env: Also, to run the program, you must specify an ampersand (&) in front of the program path. The outer quotes ($script = '...') are required because this is how you define a string variable in PowerShell. The inner double quotes are required because there are spaces in the path.
-
 $script = '&"$env:ProgramFiles\Common Files\Microsoft Shared\MSInfo\msinfo32.exe" /report "$env:Tmp\inforeport"' Invoke-VMScript -ScriptText $script -VM VM -GuestCredential $guestCredential
 
 10. Get-VICommand: How to view all available commands
 
-This function retrieves all commands of the imported VMware modules, including cmdlets, aliases, and functions.
-
-If you are not sure what VMware PowerCLI command should be used to accomplish your work, Get-Command is a convenient way to retrieve all relevant commands of modules, including cmdlets, aliases, and functions:
-
 To retrieve all available commands of the imported VMware modules:
-
 Get-VICommand
 
-To retrieve all relevant commands for the specified thing, for example, snapshot:
-
-Get-VICommand *snapshot*
-
-
+To retrieve all relevant commands for the specified "snapshot":
 Get-VICommand *snapshot*
 
 11. Get-Help: How to access official help system
 
-If you are not familiar with VMware PowerCLI, there is also a built-in help system that allows you to quickly retrieve the usage of PowerCLI commands for VMware.
-
 Run the following command to display the basic information of the command, such as synopsis, syntax, and descriptions:
-
 Get-Help [command]
 
 If you want to view all of the help information about this command, including parameters and examples, run the command:
-
 Get-Help [command] -Full
 
-Note: Before you start, you may need to run Update-Help to install the most current help files for Windows PowerShell modules. If you haven't updated it in a while, you may be prompted to update it when you use Get-Help. Type Y and press Enter to continue, and then you will be able to make a query again.
-
-
+Note: Before you start, you may need to run Update-Help to install the most current help files for Windows PowerShell modules. 
 Update Get-Help
