@@ -1,1 +1,26 @@
+View network stats filtering by process ID.
 netstat -ano | findstr "Process ID"
+
+List All TCP Ports:
+netstat -at
+
+List All UDP Ports:
+netstat -au
+
+List only listening ports:
+netstat -l
+
+List Stats:
+netstat -s
+
+List Network Interface stats:
+netstat -i
+
+List Process name:
+netstat -tp
+
+Display Routing table:
+netstat -r
+
+Find a process on a port:
+netstat -an | grep ':[port number]'
