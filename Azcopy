@@ -40,7 +40,7 @@ AzCopy allows you to manage jobs for ongoing and past operations:
   azcopy jobs resume <job-id>
 
 Advanced Commands and Flags:
-  AzCopy includes several advanced commands and flags that allow fine-tuning your operations:
+AzCopy includes several advanced commands and flags that allow fine-tuning your operations:
 
   --include-pattern: Include only these files when copying, syncing, or removing.
   --exclude-pattern: Exclude these files.
