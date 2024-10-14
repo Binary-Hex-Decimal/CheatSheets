@@ -1,13 +1,13 @@
 List all VMs:
 Get-VM
 
-Powered on VMs:
+List powered on VMs:
 Get-VM | where {$_.State -eq 'Running'}
 
-Powered off VMs:
+List powered off VMs:
 Get-VM | where {$_.State -eq 'Off'}
 
-Start particular VM:
+Start selected VM:
 Start-VM -Name 2virtual machine name"
 
 Start all powered off VMs:
@@ -16,7 +16,7 @@ Get-VM | where {$_.State -eq 'Off'} | Start-VM
 Shutdown all running VMs:
 Get-VM | where {$_.State -eq 'Running'} | Stop-VM
 
-Create snapshot of VM:
+Create snapshot of selected VM:
 Get-VM -Name <"VM Name" | Checkpoint-VM -SnapshotName "Snapshot name"
 
 Create a new VM:
