@@ -1,49 +1,49 @@
-http-enum
+http-enum:
 nmap [port] --script=http-enum [target]
 Example Usage: nmap --script=http-enum testhtml5.vulnweb.com
 The http-enum script is used to enumerate directories, files, and other details from web servers.
 
-smb-os-discovery
+smb-os-discovery:
 nmap --script smb-os-discovery.nse [target]
 Example Usage: nmap --script smb-os-discovery.nse example.com
 The smb-os-discovery script is a valuable tool in your pentesting arsenal. It uses the Server Message Block (SMB) protocol to identify the operating system of remote hosts.
 
-dns-brute
+dns-brute:
 nmap --script=dns-brute [target]
 Example Usage: nmap --script=dns-brute example.com
 It attempts to discover subdomains and hostnames associated with a target domain.
 
-dns-zone-transfer
+dns-zone-transfer:
 nmap --script dns-zone-transfer.nse [args] [target]
 Example Usage: nmap --script dns-zone-transfer.nse --script-args dns-zone-transfer.domain=example.com
 The dns-zone-transfer script is designed to attempt a DNS zone transfer with the target domain's DNS servers.
 
-tp-anon
+tp-anon:
 nmap --script=ftp-anon [target]
 Example Usage: nmap --script=ftp-anon 192.168.1.1
 Checks if anonymous FTP login is enabled, which could allow unauthorized access to the server's files and directories.
 
-smtp-enum-users
+smtp-enum-users:
 nmap --script=smtp-enum-users [args] [target]
 Example Usage: nmap --script=smtp-enum-users --script-args smtp.domain=mail.example.com
 The smtp-enum-users script is a reconnaissance tool that enumerates email addresses of users on SMTP servers. 
 
-vulners
+vulners:
 Command: nmap --script=vulners [args] [target]
 Example Usage: nmap --script=vulners --script-args mincvss=5.0 example.com
 The vulners category in Nmap includes multiple scripts that are designed to detect specific vulnerabilities in target systems.
 
-snmp-brute
+snmp-brute:
 Command: nmap --script=snmp-brute [target]
 Example Usage: nmap --script=snmp-brute 192.168.1.1
 The snmp-brute script is a powerful tool for identifying weak community strings or credentials in SNMP (Simple Network Management Protocol) services.
 
-http-vuln-
+http-vuln-:
 Command: nmap --script=http-vuln-* [target]
 Example Usage: nmap --script=http-vuln-cve2017-8917 example.com
 Set of scripts that detect specific vulnerabilities in web applications and web servers.
 
-smb-enum-shares
+smb-enum-shares:
 Command: nmap --script=smb-enum-shares [target]
 Example Usage: nmap --script=smb-enum-shares 192.168.1.1
 The smb-enum-shares script is a reconnaissance tool that enumerates shares available on SMB (Server Message Block) services.
