@@ -1,105 +1,102 @@
 Azure Accounts
 --------------------
-
-Login to Azure Account
+Login to Azure Account:
 Login-AzAccount 
 
-Logout of the Azure account you are connected with in yoursession
+Logout of the Azure account you are connected with in yoursession:
 Logout-AzAccount 
 
 Subscription Selection
 --------------------
-
-List all subscriptions in all tenants the account can access
+List all subscriptions in all tenants the account can access:
 Get-AzSubscription
 
-Get subscriptions in a specific tenant
+Get subscriptions in a specific tenant:
 Get-AzSubscription -TenantId "xxxx-xxxx-xxxxxxxx"
 
-Choose subscription
+Choose subscription:
 Select-AzSubscription –SubscriptionID “SubscriptonID” 
 
 Resource Groups
 --------------------
-
-Get all resource groups (Gets the resource group and additional details which can also be stored for use by additional commands).
+Get all resource groups (Gets the resource group and additional details which can also be stored for use by additional commands):
 Get-AzResourceGroup 
 
-Get a specific resource group by name
+Get a specific resource group by name:
 Get-AzResourceGroup -Name "myResourceGroup”
 
-Delete a Resource Group
+Delete a Resource Group:
 Remove-AzResourceGroup -Name "ResourceGroupToDelete"
 
 Virtual Machines
 --------------------
-
-List all VMs in current subscription
+List all VMs in current subscription:
 Get-AzVM
 
-List VMs in a resource group See Resource Groups section above)
+List VMs in a resource group See Resource Groups section above):
 Get -AzVM -ResourceGroupName $ResourceGroup
 
-Get a specific virtual machine
+Get a specific virtual machine:
 Get-AzVM -ResourceGroupName “resourcegroup” -Name "myVM"
 
-Start a VM
+Start a VM:
 Start-AzVM -ResourceGroupName “resourcegroup” -Name “vmname”
 
-Stop a VM
+Stop a VM:
 Stop-AzVM -ResourceGroupName “resourcegroup” -Name “vmname”
 
-Restart a running VM
+Restart a running VM:
 Restart-AzVM -ResourceGroupName “resourcegroup” -Name “vmname” 
 
-Delete a VM
+Delete a VM:
 Remove-AzVM -ResourceGroupName “resourcegroup” -Name “vmname” 
 
 Networking
 --------------------
-
-List virtual networks
+List virtual networks:
 Get-AzVirtualNetwork -ResourceGroupName “resourcegroup” #Lists all the virtual networks in the resource group. 
 
-Get information about a virtual network
+Get information about a virtual network:
 Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName “resourcegroup”
 
-List subnets in a virtual network
+List subnets in a virtual network:
 Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName “resourcegroup” | Select Subnets 
 
-Get information about a subnet
-Get-AzVirtualNetworkSubnetConfig -Name "mySubnet1" VirtualNetwork $vnet #Gets information about the subnet in the specified virtual network. The $vnet
-value represents the object returned by Get-AzVirtualNetwork you used
+Get information about a subnet:
+Get-AzVirtualNetworkSubnetConfig -Name "mySubnet1" VirtualNetwork $vnet 
+
+#Gets information about the subnet in the specified virtual network. The $vnet value represents the object returned by Get-AzVirtualNetwork you used
 previously. 
 
-Get all IP addresses from a resource group
+Get all IP addresses from a resource group:
 Get-AzPublicIpAddress -ResourceGroupName “resourcegroup” 
 
 
 Azure AD
 --------------------
-
-Connect to Azure Active Directory
+Connect to Azure Active Directory:
 Connect-AzureAD #Note: You will be prompted to enter your credentials and any additional authentication steps required.
 
 Disconnect from Azure Active Directory
-Disconnect-AzureAD
+Disconnect-AzureAD:
 
-Get All users
+Get All users:
 Get-AzureADUser
 
-Get specific user
+Get specific user:
 Get-AzureADUser -ObjectId "user@contoso.com"
 
-Remove User
+Remove User:
 Remove-AzureADUser -ObjectId "user@contoso.com"
 
-New User Creation
+New User Creation:
 This is a 3 step process that requires first creating a password profile, setting the password, and then passing these into the NewAzureADUser command
 
-Create Password Profile
+Create Password Profile:
 $PasswordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
-Set Password
+
+Set Password:
 $PasswordProfile.Password = "Password"
-Create User
+
+Create User:
 New-AzureADUser -DisplayName "New User" -PasswordProfile $PasswordProfile -UserPrincipalName "user@contoso.com" -AccountEnabled $true -MailNickName "Newuser"
