@@ -4,7 +4,6 @@ Each section between the dots is refered to as an an octect. 4 octects make up t
 
 Each octect consists of 8 bits with the maximum value of 255 for each octet.
 
-Example One
 255.255.255.0
 
 First octect
@@ -29,30 +28,28 @@ C - 255.255.255.0 /24
 Maximum amount of subnets is /32 i.e 255.255.255.255
 255.255.255.255 /32
 
-Example /27
+Example of a /27 Subnet:
+
 /32 - /27 equals 5 bits difference
 
 Because of the 5 bits difference we borrow these from the 255 table Working from the right i.e the fourth octet. So borrowing the bytes for values 16,8,4,3,1 which are 5 bits of an octect.
 
 First octect
 128 64 32 16 8 4 2 1
-  1. 1. 1. 1. 1. 1. 1. 1
+1   1  1  1  1 1 1 1
 Second octect
 128 64 32 16 8 4 2 1
- 1. 1. 1. 1. 1. 1. 1. 1
+1   1  1  1  1 1 1 1
 Third octect
 128 64 32 16 8 4 2 1
- 1. 1. 1. 1. 1. 1. 1. 1
+1   1  1  1  1 1 1 1
 Fourth octect
 128 64 32 16 8 4 2 1
-1. 1. 1. 0. 0. 0. 0. 0
+1   1  1  0  0 0 0 0
 
-when calculated added the fourth octect has the sume of 224. Thefore a /27 has a subnet of 255.255.255.224.
+When calculated added the fourth octect has the sume of 224. Thefore a /27 has a subnet of 255.255.255.224.
 
-
-
-Example
-Get the network ip address
+Example Obtain the network ip address:
 
 64.0.0.8
 
@@ -70,7 +67,7 @@ A - 255.0.0.0
 B - 255.255.0.0
 C - 255.255.255.0
 
-Then network ip address
+i.e The class address is a Class A.
 
 Convert the ip address to binary
 01000000
@@ -78,7 +75,7 @@ Convert the ip address to binary
 00000000
 00001000
 
-Convert the default mask to binary
+Convert the default mask to binary i.e Class A.
 11111111
 00000000
 00000000
@@ -91,10 +88,9 @@ Perform the and operation on values for both. If both are 1's then value is one 
 00000000
 00000000
 
-When converted to decimal the.value is
-64.0.0.0
+When converted to decimal the value is 64.0.0.0.
 
-Then see the number of hosts allowed by class
+Then see the number of hosts allowed by class:
 
 A - 126 networks, number usable hosts 2^24-2
 B - 16384 networks, number usable hosts 65534
