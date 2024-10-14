@@ -106,3 +106,45 @@ Total Hosts per class:
 Class A - 2^31
 Class B - 2^30
 Class C - 2^29
+
+Example: 4 Offices with 50 Hosts per office.
+50 Hosts +2 for network and broadcast address.
+Original Subnet Mask 37.1.1.0/24
+Original Subnet Mask Binary. 00100101.00000001.00000001.00000000
+
+Step 1:
+
+Find the smallest number of ^2 that is equal or greater than 52.
+2*2*2"2*2*2=64
+2^6=64
+
+so 6 Host bits are need leaving taken from the power number leaving 2 bits.
+
+Step 2:
+Add the remaining 2 bits to the original subnet mask /24+2=/26
+That means the new subnet mask is /26.
+
+Step 3:
+37.1.1.0/26 then add on 64 bits.
+37.1.1.64/26
+37.1.1.128/26
+37.1.1.192/26
+
+Step 4:
+To identify the Network ID and Broadcast Address
+
+Subnet One:
+Network ID is 00100101.0000001.00000001.00000000 (37.1.1.0)
+Broadcast address is 00100101.0000001.00000001.00111111 (37.1.1.63)
+
+Subnet Two:
+Network ID is 00100101.0000001.00000001.01000000 (37.1.1.64)
+Broadcast address is 00100101.0000001.00000001.01111111 (37.1.1.127)
+
+Subnet Three:
+Network ID is 00100101.0000001.00000001.10000000 (37.1.1.0)
+Broadcast address is 00100101.0000001.00000001.10111111 (37.1.1.63)
+
+Subnet Four:
+Network ID is 00100101.0000001.00000001.11000000 (37.1.1.0)
+Broadcast address is 00100101.0000001.00000001.11111111 (37.1.1.63)
