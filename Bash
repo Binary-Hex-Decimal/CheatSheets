@@ -1,8 +1,10 @@
+IP SCAN:
+
 -d = delimeter
 -f = feild
 4 = nth value
 
-Cat a file for a space and keep the 4th value after the 4th space and remove any trailing value with tr.
+Cat a file for a space and keep the 4th value after the 4th space and remove any trailing value with tr:
 cat "file" | grep " " | cut -d " " -f 4 | tr -d "value to remove"
 
 ipsweep.sh
@@ -10,7 +12,7 @@ ipsweep.sh
 Execute:
 ./ipsweep.sh 192.168.4 > output.tx
 
-Code:
+Code IPsweep.sh:
 !/bin/bash
 if [ "$1" == "" ]
 then
@@ -22,5 +24,5 @@ ping -c $1.$ip" | grep "Value" | cut -d " " -f 4 | tr -d "value to remove"  &
 done
 fi
 
-Take a list of IP and run nmao
+Take a list of IP and run nmap:
 for ip in $(cat output.txt); do nmap $ip; done
