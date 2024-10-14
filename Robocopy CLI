@@ -1,4 +1,4 @@
-Robocopy
+List of variables:
 /L - Test Mode
 /E - Copy All Files and Folders
 /mov - Move action
@@ -28,7 +28,7 @@ PURGE - Delete destination files/dirs that no longer exist in source.
 /XJD - exclude junction points
 /TEE - Display content in cmd window.
 
-EXAMPLES
+EXAMPLES:
 
 Perform a Test Copy:
 Robocopy "Source Path" "Destination Path" /L
@@ -39,14 +39,21 @@ Robocopy "Source Path" "Destination Path"
 Perform a copy keeping all attributes i.e. permissions etc:
 Robocopy "Source Path" "Destination Path" /E /COPYALL
 
-Perform a Move action.
+Perform a Move action:
 Robocopy "Source Path" "Destination Path" /move
 
 Perform a Move keeping all attributes i.e. permissions etc:
 Robocopy "Source Path" "Destination Path" /move /E /COPYALL
 
 Mirror Files:
-# Mirror files
 Robocopy "Source Path" "Destination Path" /mir
 
 Robocopy "Source Path" "Destination Path" /MIR /R:0 /W:15 /MT:32 /V /NP /XA:SH /E /ZB /XD "Downloads" "AppData" /LOG:robocopy.log /TEE
+
+Example Syntax:
+
+Initial Data Transfer:
+robocopy "Source" "Destination" /NP /MT:32 /E /R:3 /W:5 /ZB /COPYALL /LOG:C:\Logs\AuditLog.log
+
+Subsequent Data Transfer:
+robocopy "Source" "Destination" /NP /MT:32 /E /R:3 /W:5 /ZB /COPYALL /MIR /LOG+:C:\RobocopyLogs\AuditLogIncremental.log
