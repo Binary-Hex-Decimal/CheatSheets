@@ -1,48 +1,56 @@
-Show directories:
+Directory:
 --------------------
+Show directories contents:
 ls
+List all .PNG files:
+ls *.png
+Remove all .PNG files:
+rm *.png
 
-Create a directory:
---------------------
+Create single/multiple directory:
 mkdir "Directory1" "Directory2" "Directory3"
 
--Create Directory and sub-directorys:
+Create Directory and sub-directorys:
 mkdir -p "parent/child/grandchild"
 
--Create a directory absolute path:
+Create a directory absolute path:
 mkdir "Path""Directory1"
 
-Copy a file:
---------------------
--Copy file(s) to a destination:
-cp "Source1" "Source2" "Source3" "Destination1"/
--Copy a directory:
+Copy a directory:
 cp -R "Source1" "Destination1"
 
-Move a file:
+Files:
 --------------------
--"Change "Destination1" to rename the file."
-mv "Source1" "Source2" "Source3" "Destination1"/
-
-Remove file(s):
---------------------
--i, Ask for confirmation
--r, Delete directories
-
-rm "file1" "file2"
 
 Find a file :
---------------------
 find -iname "*.txt"
 
 -Find a file with the extension ".text" and then prompt each file to be removed. removing "-i" will remove the prompt.
 find -iname "*.txt" -exec rm -i {} \;
 
-Find files modified within the last 7 days.
---------------------
+Find files modified within the last 7 days.:
 find -mtime -7
 
-File Permissions:
+Copy file(s) to a destination:
+cp "Source1" "Source2" "Source3" "Destination1"/
+
+rename a file:
+mv "Filename1" "NewFilename1"
+
+Move files to a location:
+mv "Source1" "Source2" "Source3" "/Destination1"
+
+Remove file(s):
+rm "file1" "file2"
+or
+rm "location/file1" "location/file2" 
+
+Add the following to ask before delete or to delete directories.
+-i, Ask for confirmation
+-r, Delete directories
+
+
+Permissions:
 --------------------
 -Add Read/Write and Execute permissions. 
 chmod u+rwx "file"
@@ -50,6 +58,8 @@ chmod u+rwx "file"
 -Remove Read/Write and Execute permissions. 
 chmod go-w [file_name]
 
+Processes:
+--------------------
 List of processes
 ps aux
 
@@ -59,23 +69,28 @@ ps aux | grep "process name"
 Stop a running process by process ID
 kill -9 "5161"
 
+System Info:
+--------------------
 Show hostname
 hostname
 
 Show IP
 hostname -I
 
+Download:
+--------------------
 download file from location
 wget "IP/hostname/website"
 
+CRON Job
+--------------------
 List Cron scheduled jobs
 crontab -l
 
 Edit Cron scheduled job
 crontab -e
 
-Cron Scheduled job sample
-
+Cron Scheduled job sample:
 # * * * * * <command to execute>
 # | | | | |
 # | | | | day of the week (0–6) (Sunday to Saturday; 
