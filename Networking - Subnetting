@@ -1,4 +1,4 @@
-Each number between the dots is refered to as an an octect. 4 octects make up the ip or subnet mask.
+Each section between the dots is refered to as an an octect. 4 octects make up the ip or subnet mask.
 
 255.255.255.0
 
@@ -9,27 +9,30 @@ Example One
 
 First octect
 128 64 32 16 8 4 2 1
-  1. 1. 1. 1. 1. 1. 1. 1
+1   1  1  1  1 1 1 1 = 255
 Second octect
 128 64 32 16 8 4 2 1
- 1. 1. 1. 1. 1. 1. 1. 1
+1   1  1  1  1 1 1 1 = 255
 Third octect
 128 64 32 16 8 4 2 1
- 1. 1. 1. 1. 1. 1. 1. 1
+1   1  1  1  1 1 1 1 = 255
 Fourth octect
 128 64 32 16 8 4 2 1
-0. 0. 0. 0. 0. 0. 0. 0
+0   0  0  0  0 0 0 0 = 0
+
+The default Mask will define a subnet range
+DEFAULT MASK(s)
+A - 255.0.0.0 = /8 
+B - 255.255.0.0 /16
+C - 255.255.255.0 /24
 
 Maximum amount of subnets is /32 i.e 255.255.255.255
+255.255.255.255 /32
 
-a /27 subnet range can be calculated as follows:-
-
+Example /27
 /32 - /27 equals 5 bits difference
 
-Example Two
-255.255.255.224
-
-Because of the 5 bits difference we borrow these from the 255 table Working from the right. So borrowing the bytes for values 1,2,4,8,16 which are 5 bits of an octect.
+Because of the 5 bits difference we borrow these from the 255 table Working from the right i.e the fourth octet. So borrowing the bytes for values 16,8,4,3,1 which are 5 bits of an octect.
 
 First octect
 128 64 32 16 8 4 2 1
@@ -43,6 +46,10 @@ Third octect
 Fourth octect
 128 64 32 16 8 4 2 1
 1. 1. 1. 0. 0. 0. 0. 0
+
+when calculated added the fourth octect has the sume of 224. Thefore a /27 has a subnet of 255.255.255.224.
+
+
 
 Example
 Get the network ip address
