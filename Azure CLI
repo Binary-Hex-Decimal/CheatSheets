@@ -71,7 +71,6 @@ previously.
 Get all IP addresses from a resource group:
 Get-AzPublicIpAddress -ResourceGroupName “resourcegroup” 
 
-
 Azure AD
 --------------------
 Connect to Azure Active Directory:
