@@ -13,7 +13,6 @@ Get-Command -Module AdmPwd.PS
 
 Update-AdmPwdADSchema
 
-
 #########LETS GRANT COMPUTERS THE ABILITY TO UPDATE THERE PASSWORDS###############
 
 Set-AdmPwdComputerSelfPermission -Identity "Computers_OU"
