@@ -1,5 +1,3 @@
-Powershell
-
 Variable Naming Technique:
     
 Camel Case:
@@ -19,19 +17,10 @@ VariableName2 = VariableName1
 VariableName3 = VariableName1 + VariableName2
 VariableName4, VariableName5, VariableName6 = '1', '2', '3'
 VariableName7 = '''I am a teacher and enjoy teaching.
-I didn't find anything as rewarding as empowering people.
-That is why I created 30 days of python.'''
 
 
 Data Type:
-
 VariableName = 5
-
-View Data Type:
-print(type(VariableName))
-
-Set Data Type:
-
 VariableName = str('Hello World')	str	
 VariableName = int(20)	int	
 VariableName = float(20.5)	float	
@@ -47,9 +36,10 @@ VariableName= bytes(5)	bytes
 VariableName= bytearray(5)	bytearray	
 VariableName= memoryview(bytes(5))	memoryview
 
+View Data Type:
+print(type(VariableName))
 
 Calculations:
-
 print('Addition', 2 + 3)   # addition(+)
 print('Subtraction', 3 - 1)   # subtraction(-)
 print('Multiplication', 2 * 3)   # multiplication(*)
@@ -61,7 +51,6 @@ print('Division without remiander', 3 // 2)  # division without remainder
 Replace numbers with variable names to calculate variables.
 
 Operators:
-
 print(3 > 2)     # True, because 3 is greater than 2
 print(3 >= 2)    # True, because 3 is greater than 2
 print(3 < 2)     # False,  because 3 is greater than 2
@@ -79,15 +68,13 @@ print(len('tomato') == len('potato'))  # True
 print(len('python') > len('dragon'))   # False
 
 Boolean:
-
 print('True == True: ', True == True)
 print('True == False: ', True == False)
 print('False == False:', False == False)
 print('True and True: ', True and True)
 print('True or False:', True or False)
 
-AND, OR and NOT
-
+AND, OR and NOT:
 print(3 > 2 and 4 > 3) # True - because both statements are true
 print(3 > 2 and 4 < 3) # False - because the second statement is false
 print(3 < 2 and 4 < 3) # False - because both statements are false
@@ -141,7 +128,7 @@ print(last_three) # tho
 
 Lists:
     
-Declare Lists
+Declare Lists:
     
 fruits = ['banana', 'orange', 'mango', 'lemon']                     # list of fruits
 
