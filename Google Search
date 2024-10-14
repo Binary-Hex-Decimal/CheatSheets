@@ -1,4 +1,4 @@
-Search operator	What it does	Example
+Search operators:
 “ ”	Search for results that mention a word or phrase.	“steve jobs”
 OR	Search for results related to X or Y. 	jobs OR gates
 |	Same as OR:	jobs | gates
