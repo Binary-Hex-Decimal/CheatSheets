@@ -6,3 +6,22 @@ REG ADD HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig /t REG_DWORD /v BypassTPMCheck
 REG ADD HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig /t REG_DWORD /v BypassRAMCheck /d "1"
 REG ADD HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig /t REG_DWORD /v BypassSecureBootCheck /d "1"
 REG QUERY HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig
+
+USB Software Write Blocking:
+
+  Enable Write Protection:
+
+  Windows Registry Editor Version 5.00
+
+  [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\RemovableStorageDevices]
+  "Deny_All"=dword:00000001
+
+Disable Write Protection:
+
+  Windows Registry Editor Version 5.00
+
+  [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\RemovableStorageDevices]
+  "Deny_All"=-
+
+  [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\RemovableStorageDevices]
+  "Deny_All"=-
