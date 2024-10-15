@@ -140,3 +140,14 @@ WantedBy=multi-user.target to reload
 systemctl start FOSSLinux
 
 systemctl enable FOSSLinux
+
+Filesystem info:
+df -h
+File Info:
+dg -h "file"
+
+
+Mount:
+Syntax
+mount -t [type] [device] [dir]
+
