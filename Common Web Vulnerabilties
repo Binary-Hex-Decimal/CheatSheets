@@ -25,15 +25,3 @@ txtUserId = getRequestString("UserId");
 txtSQL = "SELECT * FROM Users WHERE UserId = " + txtUserId;
 or
 SELECT * FROM Users WHERE UserId = 105; DROP TABLE Suppliers;
-
-XSS:
-
-Command Injection:
-
-Insecure File upload:
-
-attacking Authentication:
-
-XXE (External Entities Injection):
-
-IDOR - Insecure Direct Object:
