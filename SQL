@@ -1,0 +1,215 @@
+Create table:
+Example One:
+CREATE TABLE employees (
+	id INT PRIMARY KEY,
+	first_name VARCHAR (120),
+	last_name VARCHAR (120),
+	department VARCHAR (120), 
+	salary DECIMAL (10,2)
+
+	
+);
+INSERT INTO employees (id, first_name, last_name, department, salary) VALUES (1, 'Paul', 'Garrix', 'Corporate', 3547.25);
+INSERT INTO employees (id, first_name, last_name, department, salary) VALUES (2, 'Astrid', 'Fox', 'Private Individuals', 2845.56);
+INSERT INTO employees (id, first_name, last_name, department, salary) VALUES (3, 'Matthias', 'Johnson', 'Private Individuals', 3009.41);
+INSERT INTO employees (id, first_name, last_name, department, salary) VALUES (4, 'Lucy', 'Patterson', 'Private Individuals', 3547.25);
+INSERT INTO employees (id, first_name, last_name, department, salary) VALUES (5, 'Tom', 'Page', 'Corporate', 5974.41);
+INSERT INTO employees (id, first_name, last_name, department, salary) VALUES (6, 'Claudia', 'Conte', 'Corporate', 4714.12);
+INSERT INTO employees (id, first_name, last_name, department, salary) VALUES (7, 'Walter', 'Deer', 'Private Individuals', 3547.25);
+INSERT INTO employees (id, first_name, last_name, department, salary) VALUES (8, 'Stephanie', 'Marx', 'Corporate', 2894.51);
+INSERT INTO employees (id, first_name, last_name, department, salary) VALUES (9, 'Luca', 'Pavarotti', 'Private Individuals', 4123.45);
+INSERT INTO employees (id, first_name, last_name, department, salary) VALUES (10, 'Victoria', 'Pollock', 'Corporate', 4789.53);
+
+Example Two:
+CREATE TABLE quarterly_sales (
+	employee_id INT REFERENCES employees(id),
+	q1_2022 DECIMAL (10,2),
+	q2_2022 DECIMAL (10,2),
+	q3_2022 DECIMAL (10,2),
+	q4_2022 DECIMAL (10,2)
+	
+);
+INSERT INTO quarterly_sales (employee_id, Q1_2022, Q2_2022, Q3_2022, Q4_2022) VALUES (8, 3471.41, 14789.25, 3478.34, 1254.23);
+INSERT INTO quarterly_sales (employee_id, Q1_2022, Q2_2022, Q3_2022, Q4_2022) VALUES (4, 5417.81, 12846.23, 8741.54, 3589.99);
+INSERT INTO quarterly_sales (employee_id, Q1_2022, Q2_2022, Q3_2022, Q4_2022) VALUES (10, 1547.52, 1269.66, 1478.65, 2474.33);
+INSERT INTO quarterly_sales (employee_id, Q1_2022, Q2_2022, Q3_2022, Q4_2022) VALUES (1, 8715.55, 8465.65, 24747.82, 3514.36);
+INSERT INTO quarterly_sales (employee_id, Q1_2022, Q2_2022, Q3_2022, Q4_2022) VALUES (3, 12774.51, 24784.31, 12223.34, 8451.51);
+INSERT INTO quarterly_sales (employee_id, Q1_2022, Q2_2022, Q3_2022, Q4_2022) VALUES (2, 4989.23, 5103.22, 4897.98, 5322.05);
+INSERT INTO quarterly_sales (employee_id, Q1_2022, Q2_2022, Q3_2022, Q4_2022) VALUES (7, 18415.66, 15279.37, 14634.44, 14445.12);
+INSERT INTO quarterly_sales (employee_id, Q1_2022, Q2_2022, Q3_2022, Q4_2022) VALUES (6, 2498.63, 8741.45, 3997.65, 2497.21);
+INSERT INTO quarterly_sales (employee_id, Q1_2022, Q2_2022, Q3_2022, Q4_2022) VALUES (5, 6349.74, 7555.55, 6944.35, 7788.01);
+INSERT INTO quarterly_sales (employee_id, Q1_2022, Q2_2022, Q3_2022, Q4_2022) VALUES (9, 4485.36, 4101.50, 8787.45, 7648.90);
+
+Selecting All Columns From One Table:
+SELECT *
+FROM employees;
+
+Selecting One Column From One Table:
+SELECT first_name
+FROM employees;
+
+Selecting Two Columns From One Table:
+SELECT first_name,
+     last_name
+FROM employees;
+
+Selecting Two (or More) Columns From One Table and Filtering Using Numeric Comparison in WHERE:
+
+Comparison Operator	Description
+=	Is equal to
+>	Is greater than
+<	Is less than
+>=	Is greater than or equal to
+<=	Is less than or equal to
+<>	Is not equal to
+
+SELECT
+  first_name,
+  last_name,
+  salary
+FROM employees
+WHERE salary > 3800;
+
+Selecting Two Columns and Filtering Using an Equality Condition in WHERE:
+SELECT
+  first_name,
+  last_name
+FROM employees
+WHERE first_name = 'Luca';
+
+Selecting Two Columns and Ordering by One Column:
+SELECT
+  first_name,
+  last_name
+FROM employees
+ORDER BY last_name;
+
+Selecting Two Columns and Ordering Descendingly by One Column:
+SELECT
+  first_name,
+  last_name
+FROM employees
+ORDER BY last_name DESC;
+
+Selecting Two Columns From One Table and Ordering Descendingly by Two Columns:
+SELECT
+  first_name,
+  last_name,
+  salary
+FROM employees
+ORDER BY salary DESC, last_name ASC;
+
+Selecting Two Columns With a Complex Logical Condition in WHERE:
+SELECT
+  first_name,
+  last_name,
+  salary
+FROM employees
+WHERE salary > 5000 OR salary < 3000;
+
+
+Simple Computations on Columns:
+
+Arithmetic Operator	Description
++	Addition
+-	Subtraction
+*	Multiplication
+/	Division
+%	Modulo, i.e. returns the remainder of the integer division.
+
+SELECT
+  employee_id,
+  q1_2022 + q2_2022 AS h1_2022
+FROM quarterly_sales;
+
+Using SUM() and GROUP BY:
+SELECT
+  department,
+  SUM(salary) AS total_salaries
+FROM employees
+GROUP BY department;
+
+Using COUNT() and GROUP BY:
+SELECT
+  department,
+  COUNT(*) AS employees_by_department
+FROM employees
+GROUP BY department;
+
+Using AVG() and GROUP BY:
+SELECT
+  department,
+  AVG(salary) AS average_salary
+FROM employees
+GROUP BY department;
+
+Using MIN() and GROUP BY:
+SELECT
+  department,
+  MIN(salary) AS minimum_salary
+FROM employees
+GROUP BY department;
+
+Using MAX() and GROUP BY:
+
+SELECT
+  department,
+  MAX(salary) AS maximum_salary
+FROM employees
+GROUP BY department;
+
+Using SUM(), WHERE, and GROUP BY:
+SELECT
+  department,
+  SUM(salary) AS total_salary
+FROM employees
+WHERE salary > 3500
+GROUP BY department;
+
+Using COUNT(), WHERE, and GROUP BY:
+SELECT
+  department,
+  COUNT(*) AS number_of_employees
+FROM employees
+WHERE salary > 3500
+GROUP BY department;
+
+Accessing Data in Two Tables Using INNER JOIN:
+SQL Join Type	Description
+(INNER) JOIN	Returns the matching values from both tables.
+LEFT (OUTER) JOIN	Returns all the values from the left table and only the matching values from the right table.
+RIGHT (OUTER) JOIN	Returns all the values from the right table and only the matching values from the left table.
+FULL (OUTER) JOIN	Returns all the rows from both tables.
+CROSS JOIN	Returns all combinations of all rows from the first and second table, i.e. the Cartesian product.
+
+SELECT
+  e.id,
+  e.first_name,
+  e.last_name,
+  qs.q1_2022 + qs.q2_2022 + qs.q3_2022 + qs.q4_2022 AS total_sales_2022
+FROM employees e
+JOIN quarterly_sales qs
+ON e.id = qs.employee_id;
+
+Accessing Data in Two Tables Using INNER JOIN and Filtering Using WHERE:
+SELECT
+  e.id,
+  e.first_name,
+  e.last_name,
+  qs.q4_2022-qs.q3_2022 AS sales_change
+FROM employees e
+JOIN quarterly_sales qs
+ON e.id = qs.employee_id
+WHERE qs.q4_2022-qs.q3_2022 < 0;
+
+Accessing Data in Two Tables Using INNER JOIN, Filtering Using WHERE, and Sorting With ORDER BY:
+SELECT
+  e.id,
+  e.first_name,
+  e.last_name,
+  qs.q4_2022
+FROM employees e
+JOIN quarterly_sales qs
+ON e.id = qs.employee_id
+WHERE qs.q4_2022 > 5000
+ORDER BY qs.q4_2022 DESC;
