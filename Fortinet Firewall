@@ -1,8 +1,18 @@
-“Show/Get” sys status	Show status summary.
-Dia sys flash list	Show contents of flash memory with Active next to active firmware.
-“Show/Get” get system interface	Show all Interfaces.
-get system interface physical	Show list of physical interfaces and details.
-Static
+Show status summary:
+“Show/Get” sys status
+
+Show all Interfaces:
+“Show/Get” get system interface
+
+Show list of physical interfaces and details:
+get system interface physical	
+
+Show contents of flash memory with active firmware:
+Dia sys flash list	
+
+NETWORKING:
+
+STATIC:
 Config sys interface
 Edit “interface name”
 Set mode static
@@ -10,7 +20,7 @@ Set allow ssh ping https
 Set ip x.x.x.x.x|x.x.x.x.x
 End
 
-DHCP
+DHCP:
 Config sys interface
 Edit “interface name”
 Set mode dhcp
@@ -19,7 +29,8 @@ End	Configure interface with static or dhcp.
 show system dhcp/dhcp6 server	Show DHCP configuration.
 execute dhcp/dhcp6 lease-list “interface
 name”	Show all IP allocation via DHCP.
-	
+
+VLAN:
 config system interface
     edit "interface name”
         set status “up/down”
@@ -54,20 +65,43 @@ config router static
         set bfd disable
     next
 end	Configure a static router.
-get router info routing-table all	Show routing table.
-diag firewall proute list	Display the Policy Routes
 
-show full-configuration (Show full configuration display)
-get router info routing-table detail (Get detailed routing info)
-show firewall policy (Show current firewall policy)
-get system status (Show firmeware and Bios versions) 
-get system interface physical (Check interface status)
-get system arp (Display ARP table)
-end/abort (Save Configuration/Don't Save Configuration & exit)
+Show routing table:
+get router info routing-table all
+	
+Display the Policy Routes
+diag firewall proute list	
 
-config firewall policy (Enter firewall configuration)
-show (Shows all firewall policies)
-end (Save and Exit)
+(Show full configuration display):
+show full-configuration 
+
+(Get detailed routing info):
+get router info routing-table detail 
+
+(Show current firewall policy):
+show firewall policy
+
+(Show firmeware and Bios versions):
+get system status  
+
+(Check interface status):
+get system interface physical 
+
+(Display ARP table):
+get system arp 
+
+(Save Configuration/Don't Save Configuration & exit)
+end/abort 
+
+FIREWALL:
+(Enter firewall configuration):
+config firewall policy 
+
+(Shows all firewall policies):
+show 
+
+(Save and Exit)
+end 
 
 config firewall policy
 edit 555
@@ -80,8 +114,35 @@ set schedule "always"
 set servie "HTTP" "ICMP_ANY"
 end
 
+delete “Enter policy name”:
 config firwall policy
-delete “Enter policy name” 
 end
 
-exec backup config tftp “conf/test-fw-01_20180913.conf” “xxx.xxx.xxx.xxx”
+
+BACKUP:
+
+Backup Logs to usb:
+exec log backup /usb/log.tar
+
+To backup the configuration using the CLI:
+Use one of the following commands:
+
+execute backup config management-station <comment>
+
+Backup to USB:
+
+execute backup config usb <backup_filename> [<backup_password>]
+
+Backup FTP:
+
+execute backup config ftp <backup_filename> <ftp_server> [<port>] [<user_name>] [<password>]
+
+Backup TFTP:
+
+execute backup config tftp <backup_filename> <tftp_servers> <password>
+
+Use the same commands to backup a VDOM configuration by first entering the commands:
+
+config vdom
+
+edit <vdom_name>
