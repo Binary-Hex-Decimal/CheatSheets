@@ -21,7 +21,7 @@ cp -R "Source1" "Destination1"
 
 Files:
 --------------------
-Find a file :
+Find a file :(Use locate you use a database searching method)
 find -iname "*.txt"
 
 -Find a file with the extension ".text" and then prompt each file to be removed. removing "-i" will remove the prompt.
