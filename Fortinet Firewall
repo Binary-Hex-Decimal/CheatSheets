@@ -147,16 +147,24 @@ config vdom
 edit <vdom_name>
 
 RESTORE CONFIG:
-
 execute restore config management-station normal 0
-
 or:
-
 execute restore config usb <filename> [<password>]
 
 FTP:
-
 execute restore config ftp <backup_filename> <ftp_server> [<port>] [<user_name>] [<password>]
 
 TFTP:
 execute restore config tftp <backup_filename> <tftp_server> <password>
+
+BACKUP Certificate:
+execute vpn certificate local export tftp <cert_name> <filename> <tftp_ip>
+
+where:
+
+<cert_name> is the name of the server certificate.
+<filename> is a name for the output file.
+<tftp_ip> is the IP address assigned to the TFTP server host interface.
+
+Restore Certificate:
+execute vpn certificate local import tftp <filename> <tftp_ip>
