@@ -21,7 +21,6 @@ cp -R "Source1" "Destination1"
 
 Files:
 --------------------
-
 Find a file :
 find -iname "*.txt"
 
@@ -48,7 +47,6 @@ rm "location/file1" "location/file2"
 Add the following to ask before delete or to delete directories.
 -i, Ask for confirmation
 -r, Delete directories
-
 
 Permissions:
 --------------------
@@ -145,7 +143,6 @@ Filesystem info:
 df -h
 File Info:
 df -h "file"
-
 
 Mount:
 Syntax
