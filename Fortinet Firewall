@@ -145,3 +145,18 @@ Use the same commands to backup a VDOM configuration by first entering the comma
 config vdom
 
 edit <vdom_name>
+
+RESTORE CONFIG:
+
+execute restore config management-station normal 0
+
+or:
+
+execute restore config usb <filename> [<password>]
+
+FTP:
+
+execute restore config ftp <backup_filename> <ftp_server> [<port>] [<user_name>] [<password>]
+
+TFTP:
+execute restore config tftp <backup_filename> <tftp_server> <password>
