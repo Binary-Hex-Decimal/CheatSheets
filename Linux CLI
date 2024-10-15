@@ -150,4 +150,43 @@ df -h "file"
 Mount:
 Syntax
 mount -t [type] [device] [dir]
+e.g.
+Mount Filesystem:
+sudo mount /dev/sdb1 /mnt/media
+Mount USB:
 
+Mount CD-ROM:
+mount -t iso9660 -o ro /dev/cdrom /mnt
+
+Mount ISO:
+sudo mount /image.iso /media/iso-file -o loop
+
+mkdir /media/usb-drive:
+Step 1 - fdisk -l
+Step 2 - sudo mount /dev/sdb1 /media/usb-drive
+
+Unmount:
+umount [dir/Device/]
+
+Manually Mount Share:
+Step 1 - Create a mount location
+i.e sudo mkdir "/var/backups"
+Step 2 - Moun the share
+sudo mount -t nfs 10.10.0.10:/backups "/var/backups"
+
+Ato Mount share:
+Step 1 - Create a mount location
+i.e sudo mkdir "/var/backups"
+Step 2 - Open file to edit
+sudo nano /etc/fstab
+Step 3 - Add the lines:
+mount /var/backups
+mount 10.10.0.10:/backups
+
+On reboot the share will be remounted
+
+Remove Mount:
+umount 10.10.0.10:/backups 
+umount /var/backups
+or
+remove lines from sudo nano /etc/fstab
