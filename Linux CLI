@@ -144,7 +144,7 @@ systemctl enable FOSSLinux
 Filesystem info:
 df -h
 File Info:
-dg -h "file"
+df -h "file"
 
 
 Mount:
