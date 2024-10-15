@@ -1,8 +1,6 @@
-Processes
+Discovery/Enumeration:
 
 Discovery i.e Enumeration of Hosts (Operating system, Ip addresses, Ports, services),Shares, Devices(Version, Ip addresses, Ports, services)
-
-Discovery:
 
 netdiscover -r "IP ADDRESS"/"24"
 
@@ -18,7 +16,6 @@ amass enum -d tesla.com
 
 HTTPobe:
 httprobe -s -p https:443
-
 
 Exploit:
 Spoofing:
