@@ -1,0 +1,39 @@
+SQL Exploits:
+
+txtUserId = getRequestString("UserId");
+txtSQL = "SELECT * FROM Users WHERE UserId = " + txtUserId;
+
+1=1 Always True:
+SELECT * FROM Users WHERE UserId = 105 OR 1=1;
+or
+SELECT UserId, Name, Password FROM Users WHERE UserId = 105 or 1=1;
+
+= Always true:
+uName = getRequestString("username");
+uPass = getRequestString("userpassword");
+
+sql = 'SELECT * FROM Users WHERE Name ="' + uName + '" AND Pass ="' + uPass + '"'
+or
+SELECT * FROM Users WHERE Name ="John Doe" AND Pass ="myPass"
+or
+SELECT * FROM Users WHERE Name ="" or ""="" AND Pass ="" or ""=""
+
+Batched SQL:
+SELECT * FROM Users; DROP TABLE Suppliers
+or
+txtUserId = getRequestString("UserId");
+txtSQL = "SELECT * FROM Users WHERE UserId = " + txtUserId;
+or
+SELECT * FROM Users WHERE UserId = 105; DROP TABLE Suppliers;
+
+XSS:
+
+Command Injection:
+
+Insecure File upload:
+
+attacking Authentication:
+
+XXE (External Entities Injection):
+
+IDOR - Insecure Direct Object:
