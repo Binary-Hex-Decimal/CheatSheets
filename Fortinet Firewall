@@ -118,7 +118,6 @@ delete “Enter policy name”:
 config firwall policy
 end
 
-
 BACKUP:
 
 Backup Logs to usb:
