@@ -48,6 +48,22 @@ Add the following to ask before delete or to delete directories.
 -i, Ask for confirmation
 -r, Delete directories
 
+Head:
+head -n 5 wordlist.txt
+
+Tail:(View the last 5:
+tail -n 5 wordlist.txt
+
+Header(Hex)
+xxd file
+or
+od -bc {filename} | head
+
+Header(Binary)
+xxd -b file
+or
+od -bc {filename} | tail
+
 Permissions:
 --------------------
 -Add Read/Write and Execute permissions. 
