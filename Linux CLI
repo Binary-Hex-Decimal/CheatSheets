@@ -216,3 +216,38 @@ umount 10.10.0.10:/backups
 umount /var/backups
 or
 remove lines from sudo nano /etc/fstab
+
+Networking:
+
+Display IP:
+ip address
+
+display stats:
+ip -s link
+
+Turn off network interface:
+sudo ip link set dev enp0s3 down
+
+Turn on network interface:
+sudo ip link set dev enp0s3 up
+
+View routing:
+ip route
+
+Add a route:
+sudo ip route add "10.0.3.0/24" via "10.0.2.1"
+
+Delete a route:
+sudo ip route delete "10.0.3.0/24" via "10.0.2.1"
+
+scp, send a file:(add -r for recursive)
+scp file.txt xxx.xxx.xx.xxx:/location
+
+receive a file:(add -r for recursive)
+scp xxx.xxx.xxx.xxx.xx:/source location/file.txt destination/
+
+scp, send a file:(add -r for recursive)
+scp file.txt user@xxx.xxx.xx.xxx:/location
+
+receive a file:(add -r for recursive)
+scp user@xxx.xxx.xxx.xxx.xx:/source location/file.txt destination/
