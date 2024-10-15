@@ -10,8 +10,18 @@ nmap -sn "IP ADDRESS"/"24" - Ping Scan
 nmap -T4 -F "IP ADDRESS"/"24" - Quick Scan
 nmap -sV -T4 -O -F --version-light "IP ADDRESS"/"24" - Quick Scan Plus
 
+Assetfinder: (Finds Additional Domains)
+assetfinder tesla.com >> tesla-sub.txt
+
+Amass:()
+amass enum -d tesla.com
+
+HTTPobe:
+httprobe -s -p https:443
+
+
 Exploit:
-Sopofing:
+Spoofing:
 
 Arpspoofing-
 ifconfig - To find connected interface
