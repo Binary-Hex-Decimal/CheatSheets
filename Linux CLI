@@ -96,14 +96,6 @@ ps aux | grep "process name"
 Stop a running process by process ID
 kill -9 "5161"
 
-System Info:
---------------------
-Show hostname
-hostname
-
-Show IP
-hostname -I
-
 Download:
 --------------------
 download file from location
@@ -168,12 +160,22 @@ systemctl start FOSSLinux
 
 systemctl enable FOSSLinux
 
+System Info:
+--------------------
+Show hostname
+hostname
+
+Show IP
+hostname -I
+
 Filesystem info:
 df -h
+
 File Info:
 df -h "file"
 
 Mount:
+--------------------
 Syntax
 mount -t [type] [device] [dir]
 e.g.
@@ -218,7 +220,7 @@ or
 remove lines from sudo nano /etc/fstab
 
 Networking:
-
+--------------------
 Display IP:
 ip address
 
