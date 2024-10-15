@@ -64,6 +64,19 @@ xxd -b file
 or
 od -bc {filename} | tail
 
+Create a tar file:
+add the variable
+v-verbose
+z-compress as .gz extension
+
+tar -c archive.tar
+
+Test a tar file:
+tar -t archive.tar
+
+creates an archive including any files starting with file and specific file anotherfile.txt:
+tar -cvf archive.tar file?.txt dir? anotherfile.txt
+
 Permissions:
 --------------------
 -Add Read/Write and Execute permissions. 
