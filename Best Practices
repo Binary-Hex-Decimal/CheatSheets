@@ -1,18 +1,34 @@
 Storage Area Network (SAN)
+--------------------
 
 Security:
-Segregation: VLAN or segregating SAN network.
-
-Encryption: Protect data both at rest and in transit.
-
-Access Controls: Use strong access controls to limit who can access the SAN and what they can be done.
-
+-Segregation: VLAN or segregating SAN network.
+-Encryption: Protect data both at rest and in transit.
+-Access Controls: Use strong access controls to limit who can access the SAN and what they can be done.
 
 Maintenance/Monitoring
-Regular Review in terms of security and overall set-up
-
-Identify and track Performance baseline
-
+-Regular Review in terms of security and overall set-up
+-Identify and track Performance baseline
 
 Documenting:
-Create a schematic of your network to aid in management and troubleshooting
+-Create a schematic of your network to aid in management and troubleshooting
+
+
+Computer Networks:
+--------------------
+
+Security:
+Permissions:
+-MFA enabling were possible and applicable.
+-Implement the principle of granting users minimum level of access.
+-Network segmentation i.e VLAN to isolate networks and limit the spread of potential breaches. This would also assist with mangement of network flow.
+-Deploy Firewall and IDS utilising packet inspection to idnetify potential suspicious traficc.
+-Encrypting Data in transit and at rest to protect again data exilfiltration.
+
+Management:
+-Regular updates/patching deployement/testing maintaining rollback configurations. Either periodically or ad-hoc when major vilnerabilities are identifed.
+-Regular INTERNAL/EXTERNAL Penetration Testing to identify and address vulnerabilities.
+-Educate employees about security best practices i.e passwordm phishing to limit these types of threats. 
+-Continuous Monitoring and review to verifyuser and device activity.
+-Documentation to aid in Network troubleshooting.
+-Test implemented mechanism i.e failover processes peridocally.
