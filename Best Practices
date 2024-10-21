@@ -1,0 +1,18 @@
+Storage Area Network (SAN)
+
+Security:
+Segregation: VLAN or segregating SAN network.
+
+Encryption: Protect data both at rest and in transit.
+
+Access Controls: Use strong access controls to limit who can access the SAN and what they can be done.
+
+
+Maintenance/Monitoring
+Regular Review in terms of security and overall set-up
+
+Identify and track Performance baseline
+
+
+Documenting:
+Create a schematic of your network to aid in management and troubleshooting
