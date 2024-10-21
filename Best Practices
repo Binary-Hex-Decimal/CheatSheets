@@ -32,3 +32,40 @@ Management:
 -Continuous Monitoring and review to verifyuser and device activity.
 -Documentation to aid in Network troubleshooting.
 -Test implemented mechanism i.e failover processes peridocally.
+
+Server
+--------------------
+RAID
+redundancy
+FileShare i.e Zero Trust
+Anti-Virus/EDR/XDR etc
+OS/service hardening
+PSU
+
+/Host:
+--------------------
+Anti-Virus/EDR/XDR etc
+OS/service hardening
+No Local Admin i.e Zero Trust
+
+Physical:
+--------------------
+Keycard
+Door access
+Bars on windows
+
+CLOUD:
+--------------------
+
+ENVIROMENTAL:
+--------------------
+Flood
+
+Management:
+--------------------
+Buisness continuity
+Risk Accessment
+Chanage management
+
+SOFTWARE
+--------------------
