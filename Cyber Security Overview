@@ -10,7 +10,42 @@ Insider
 
 Compliance Frameworks:
 NIST (National Institute of Standard Technology)
+The NIST Cybersecurity Framework (CSF) is a set of guidelines help organizations manage and mitigate cybersecurity risks. 
+
+NIST Core functions:
+Identify: Understand the business context, resources, and cybersecurity risks.
+Protect: Implement safeguards to ensure the delivery of critical infrastructure services.
+Detect: Develop and implement activities to identify the occurrence of a cybersecurity event.
+Respond: Take action regarding a detected cybersecurity incident.
+Recover: Maintain plans for resilience and restore any capabilities or services impaired due to a cybersecurity incident23.
+
+*https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf
+
 CISA
+The CISA Framework was developed by the Cybersecurity and Infrastructure Security Agency (CISA) to enhance cybersecurity and infrastructure resilience.
+
+CISA Controls:
+CIS Control 1: Inventory and Control of Enterprise Assets
+CIS Control 2: Inventory and Control of Software Assets
+CIS Control 3: Data Protection
+CIS Control 4: Secure Configuration of Enterprise Assets and Software
+CIS Control 5: Account Management
+CIS Control 6: Access Control Management
+CIS Control 7: Continuous Vulnerability Management
+CIS Control 8: Audit Log Management
+CIS Control 9: Email and Web Browser Protections
+CIS Control 10: Malware Defenses
+CIS Control 11: Data Recovery
+CIS Control 12: Network Infrastructure Management
+CIS Control 13: Network Monitoring and Defense
+CIS Control 14: Security Awareness and Skills Training
+CIS Control 15: Service Provider Management
+CIS Control 16: Application Software Security
+CIS Control 17: Incident Response Management
+CIS Control 18: Penetration Testing
+
+*https://www.cisecurity.org/controls/cis-controls-list
+
 SOC2
 ISO 27001
 
