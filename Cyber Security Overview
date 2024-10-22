@@ -14,7 +14,7 @@ CISA
 SOC2
 ISO 27001
 
-NIST (National Institute of Standard Technology)
+NIST (National Institute of Standard Technology):
 The NIST Cybersecurity Framework (CSF) is a set of guidelines help organizations manage and mitigate cybersecurity risks. 
 
 NIST Core functions:
@@ -51,8 +51,28 @@ CIS Control 18: Penetration Testing
 
 *https://www.cisecurity.org/controls/cis-controls-list
 
-SOC2
-ISO 27001
+SOC2(Service Organization Control 2):
+SOC2 cybersecurity compliance framework was developed by the American Institute of Certified Public Accountants (AICPA). It is designed to ensure that service organizations, particularly those handling customer data, implement and maintain effective security controls to protect that data.
+
+Key Components:
+Security:
+Ensures the system is protected against unauthorized access (both physical and logical).
+
+Availability:
+Ensures the system is available for operation and use as committed or agreed.
+
+Processing Integrity:
+Ensures the system processing is complete, valid, accurate, timely, and authorized.
+
+Confidentiality:
+Ensures information designated as confidential is protected as committed or agreed.
+
+Privacy:
+Ensures personal information is collected, used, retained, disclosed, and disposed of in conformity with the commitments in the entity’s privacy notice13.
+
+*https://secureframe.com/hub/soc-2/what-is-soc-2
+
+ISO 27001:
 
 Regulations:
 
