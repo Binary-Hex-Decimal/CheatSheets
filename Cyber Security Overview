@@ -54,6 +54,99 @@ CIS Control 18: Penetration Testing
 SOC2
 ISO 27001
 
+Regulations:
+
+Sarbanes-Oxley:
+
+The Sarbanes-Oxley Act of 2002 (often referred to as SOX or Sarbox) is a U.S. federal law enacted to protect investors from fraudulent financial reporting by corporations.
+
+Key Provisions:
+Public Company Accounting Oversight Board (PCAOB):
+Establishes an independent board to oversee the audits of public companies to protect investors’ interests.
+
+Corporate Responsibility:
+Requires senior executives to take individual responsibility for the accuracy and completeness of corporate financial reports.
+
+Enhanced Financial Disclosures:
+Mandates more stringent financial reporting requirements, including the disclosure of off-balance-sheet items and the use of pro forma figures.
+
+Auditor Independence:
+Sets restrictions on the services that auditors can provide to their clients to prevent conflicts of interest.
+
+Internal Control Assessment:
+Requires companies to implement and report on internal controls over financial reporting, with an annual assessment by management and an independent auditor.
+
+Whistleblower Protections:
+Provides protections for employees who report fraudulent activities, ensuring they are not retaliated against.
+
+Criminal Penalties:
+Imposes severe penalties for corporate fraud and document destruction, including fines and imprisonment for executives who knowingly certify false financial statements123.
+The Sarbanes-Oxley Act aims to improve the accuracy and reliability of corporate disclosures, thereby restoring investor confidence in the financial markets.
+
+HIPAA:
+The Health Insurance Portability and Accountability Act (HIPAA) is a U.S. federal law enacted in 1996 to protect the privacy and security of individuals’ medical information.
+
+Privacy Rule:
+Establishes national standards for the protection of certain health information. It sets limits on the use and disclosure of individuals’ health information and grants patients rights over their health information, including rights to examine and obtain a copy of their health records and request corrections1.
+
+Security Rule:
+Sets standards for the protection of electronic protected health information (e-PHI). It requires appropriate administrative, physical, and technical safeguards to ensure the confidentiality, integrity, and security of e-PHI2.
+
+Breach Notification Rule:
+Requires covered entities and their business associates to provide notification following a breach of unsecured protected health information1.
+
+Enforcement Rule:
+Provides standards for the enforcement of all the Administrative Simplification Rules, including provisions relating to compliance and investigations, the imposition of civil money penalties for violations, and procedures for hearings1.
+HIPAA aims to ensure that individuals’ health information is properly protected while allowing the flow of health information needed to provide high-quality healthcare.
+
+GDPR:
+The General Data Protection Regulation (GDPR) is a comprehensive data privacy law enacted by the European Union (EU) to protect the personal data of individuals within the EU and the European Economic Area (EEA).
+
+Data Protection Principles: 
+Personal data must be processed lawfully, fairly, and transparently. It should be collected for specified, explicit, and legitimate purposes and not further processed in a manner incompatible with those purposes2.
+
+Rights of Data Subjects:
+Individuals have various rights under the GDPR, including the right to access their data, the right to rectification, the right to erasure (also known as the “right to be forgotten”), and the right to data portability23.
+
+Obligations for Data Controllers and Processors:
+Organizations that handle personal data must implement appropriate technical and organizational measures to ensure data protection. They must also report data breaches to the relevant authorities within 72 hours2.
+
+Penalties for Non-Compliance:
+Organizations that fail to comply with the GDPR can face significant fines, up to 4% of their annual global turnover or €20 million, whichever is higher3.
+
+FISMA:
+FISMA is the Federal Information Security Management Act of 2002. And basically, it requires all federal IT to comply with NIST.
+
+Key aspects of FISMA include:
+
+Security Standards:
+Establishes guidelines and security standards to protect government information and operations.
+
+Agency Responsibilities:
+
+Requires federal agencies to develop, document, and implement an information security program to protect their information and systems.
+
+Oversight and Reporting:
+Mandates regular audits and reporting to ensure compliance with the security standards. The Office of Management and Budget (OMB) oversees the implementation, while the Department of Homeland Security (DHS) provides operational and technical assistance12.
+
+PCI:
+
+The Payment Card Industry Data Security Standard (PCI DSS) is a set of security standards designed to ensure that all companies that accept, process, store, or transmit credit card information maintain a secure environment.
+
+Key Objectives:
+Build and Maintain a Secure Network and Systems:
+
+Protect Cardholder Data:
+
+Maintain a Vulnerability Management Program:
+
+Implement Strong Access Control Measures:
+
+Regularly Monitor and Test Networks:
+
+Maintain an Information Security Policy:
+
+
 Auditing:
 
 Infrastructure Components:
