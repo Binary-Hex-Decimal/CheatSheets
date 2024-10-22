@@ -23,8 +23,10 @@ Protect: Implement safeguards to ensure the delivery of critical infrastructure 
 Detect: Develop and implement activities to identify the occurrence of a cybersecurity event.
 Respond: Take action regarding a detected cybersecurity incident.
 Recover: Maintain plans for resilience and restore any capabilities or services impaired due to a cybersecurity incident23.
+Govern: Designed to help organizations measure the outcomes of the other five functions, addresses organizational context, policy, oversight, and supply chain risk management.
 
 *https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf
+*https://www.cybersecuritydive.com/news/nist-cybersecurity-framework/708959/
 
 CISA
 The CISA Framework was developed by the Cybersecurity and Infrastructure Security Agency (CISA) to enhance cybersecurity and infrastructure resilience.
