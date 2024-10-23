@@ -1,0 +1,39 @@
+What is Cyber security Risk:
+Cybersecurity risk refers to the potential loss or damage resulting from a cyberattack or data breach. It involves identifying and assessing threats and vulnerabilities within an organization’s digital systems and networks. 
+
+Examples:
+Ransomware
+Malware
+Insider threats
+Phishing attacks
+
+Risk Assesment Approaches:
+
+Avoid:
+ -Avoiding Untrusted Software.
+ -Zero-Trust permissions.
+ -Network Segmentation i.e Vlan.
+
+Mitigate:
+ -Risk Assessments
+ -Implement Network Access Controls i.e MFA,Zero-Trust permissions.
+ -Regular Software Updates.
+ -Employee Training.
+ -Encryption: Protect sensitive data by encrypting it both in transit and at rest.
+ -Backup Data.
+ -Monitor and Respond.
+ -Implement Security Policies.
+
+Transfer:
+
+Accept:
+
+
+
+
+
+
+Name multiple resources for gathering threat intelligence
+Apply threat intelligence to qualifying information security risk
+Analyze information security risk based on vulnerabilities, threats, and exploitation potential
+Summarize how information security risk is calculated
