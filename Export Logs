@@ -1,0 +1,35 @@
+Export Logs:
+
+Hyper-V:
+
+System Level:
+Get-EventLog System-Source "*Hyper-V*" | Export-CSV C:\Temp\Hyper-VRelatedEvents.CSV -NoTypeInfo
+Application Level:
+Get-EventLog -LogName Application -Source "*vmic*" | Export-CSV C:\Temp\Hyper-VEventsAppLog.CSV -NoTypeInfo
+
+ESXI:
+/usr/bin/vm-support
+
+vSphere:
+Administration > Deployment > System Configuration > Select a vCenter Server node > Export Support Bundle:-
+ -Full Support Bundle: Contains information on all services.
+ -Minimal Support Bundle: Contains basic product and configuration information.
+ -Custom Support Bundle: Contains customized information. Select any of the manifest properties to download the corresponding log files.
+
+Nutanix:
+NCC log collector:
+ -"ncc log_collector run_all" to collect both CVM and Hyper-V logs.
+ -"ncc log_collector hypervisor_logs" to only collect Hyper-V logs.
+
+NCC logbay:
+nutanix@cvm:~$ logbay collect -t hyperv_logs,hyperv_config,setup_hyperv
+
+Powershell:
+Step One:
+mkdir "c:\temp" -ErrorAction Ignore
+Step Two:
+Get-WinEvent @{logname='application','system'} -ErrorAction Ignore|select TimeCreated,LogNAme,Id,LevelDisplayName,ProviderName,Message,MachineName,UserId|Export-Csv -Path "c:\temp\$env:computername-applicationsystem.csv" -NoTypeInformation
+Step Three:
+Get-WinEvent @{logname="Microsoft-Windows-Hyper-V-Config-Admin","Microsoft-Windows-Hyper-V-Config-Operational","Microsoft-Windows-Hyper-V-Hypervisor-Admin","Microsoft-Windows-Hyper-V-Hypervisor-Operational","Microsoft-Windows-Hyper-V-Integration-Admin","Microsoft-Windows-Hyper-V-SynthFc-Admin","Microsoft-Windows-Hyper-V-SynthNic-Admin","Microsoft-Windows-Hyper-V-SynthStor-Admin","Microsoft-Windows-Hyper-V-SynthStor-Operational","Microsoft-Windows-Hyper-V-VID-Admin","Microsoft-Windows-Hyper-V-VMMS-Admin","Microsoft-Windows-Hyper-V-VMMS-Networking","Microsoft-Windows-Hyper-V-VMMS-Operational","Microsoft-Windows-Hyper-V-VMMS-Storage","Microsoft-Windows-Hyper-V-Worker-Admin","Microsoft-Windows-Hyper-V-High-Availability-Admin","Microsoft-Windows-SMBClient/Operational","Microsoft-Windows-SMBClient/Connectivity"} -ErrorAction Ignore |select TimeCreated,LogNAme,Id,LevelDisplayName,ProviderName,Message,MachineName,UserId|Export-Csv -Path "c:\temp\$env:computername-hyperv.csv" -NoTypeInformation
+Step Four:
+get-clusterlog -destination c:\temp
