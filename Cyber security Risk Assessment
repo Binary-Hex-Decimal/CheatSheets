@@ -25,11 +25,19 @@ Mitigate:
  -Implement Security Policies.
 
 Transfer:
+ -Outsourcing certain IT or security functions to third-party providers i.e MSP,Cloud etc.
+ -Cyber Insurance: Purchasing insurance policies that cover financial losses from cyber incidents, including data breaches, legal fees, and recovery costs.
 
 Accept:
+ -Accepting the residual risk after implementing all feasible security controls. This is a strategic decision based on a thorough risk assessment.
+ -Accept risks that are low-impact, have a low likelihood of occurring, or when the cost of mitigation is too high compared to the potential damage1.
+ -Legacy Systems: Continuing to use older systems that are costly to upgrade but have minimal exposure to critical threats.
+ -Review and Reassessment: Regularly review accepted risks to ensure they remain within acceptable levels and reassess them as the threat landscape evolves2.
 
+Frameworks:
+Nist SP 800-39:
 
-
+*https://csrc.nist.gov/pubs/sp/800/39/final
 
 
 
