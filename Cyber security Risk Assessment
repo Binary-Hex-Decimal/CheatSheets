@@ -112,6 +112,28 @@ The model provides a common language for discussing and documenting threats.
 *https://www.eccouncil.org/cybersecurity-exchange/ethical-hacking/diamond-model-intrusion-analysis/
 *https://kravensecurity.com/diamond-model-analysis/
 
+Information Security Governance:
+
+Overview:
+
+Policies:
+Definition: A high-level statement that outlines an organization’s intentions and direction regarding specific issues.
+
+Example:
+ -A company policy might state that all employees must protect confidential information.
+
+Standards:
+Definition: Specific, measurable requirements that must be met to comply with a policy.
+
+Example:
+ -Password Policy specifiy a certain complexity.
+
+Procedures:
+Detailed, step-by-step instructions on how to implement policies and standards.
+
+Example:
+ -A procedure might outline the steps for creating a secure password, including how to reset it if forgotten.
+
 
 
 
