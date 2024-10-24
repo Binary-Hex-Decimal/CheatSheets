@@ -2,10 +2,10 @@ What is Cyber security Risk:
 Cybersecurity risk refers to the potential loss or damage resulting from a cyberattack or data breach. It involves identifying and assessing threats and vulnerabilities within an organization’s digital systems and networks. 
 
 Examples:
-Ransomware
-Malware
-Insider threats
-Phishing attacks
+ -Ransomware
+ -Malware
+ -Insider threats
+ -Phishing attacks
 
 Risk Assesment Approaches:
 
@@ -35,7 +35,16 @@ Accept:
  -Review and Reassessment: Regularly review accepted risks to ensure they remain within acceptable levels and reassess them as the threat landscape evolves2.
 
 Frameworks:
-Nist SP 800-39:
+NIST Special Publication (SP) 800-39, (Managing Information Security Risk: Organization, Mission, and Information System View):
+Provides comprehensive guidance for managing information security risks across an organization. Here are the key points:
+
+Components:
+ -Risk Framing: Establishing the context for risk-based decisions.
+ -Risk Assessment: Identifying and evaluating risks to information systems.
+ -Risk Response: Determining appropriate actions to address identified risks.
+ -Risk Monitoring: Continuously overseeing the risk environment and the effectiveness of risk responses2.
+ -Integration with Other Standards: SP 800-39 complements other NIST standards and guidelines, providing a holistic view of risk management1.
+ -Applicability: While primarily designed for federal information systems, the principles and practices can be applied by any organization seeking to improve its information security risk management2.
 
 *https://csrc.nist.gov/pubs/sp/800/39/final
 
