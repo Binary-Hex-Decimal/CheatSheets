@@ -48,6 +48,73 @@ Components:
 
 *https://csrc.nist.gov/pubs/sp/800/39/final
 
+Threat Modelling:
+
+Threat modeling is a structured process used to identify, assess, and address potential security threats to a system or application. Here are the key aspects:
+
+Purpose:
+The main goal is to understand the security risks and vulnerabilities within a system and to develop strategies to mitigate these risks1.
+
+Process:
+Identify Assets: Determine what needs protection, such as data, systems, or applications.
+
+Create an Architecture Overview:
+Diagram the system to understand how data flows and where potential vulnerabilities might exist.
+Identify Threats:
+Use frameworks like STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege) to categorize potential threats2.
+Mitigate Threats:
+Develop and implement strategies to reduce or eliminate identified threats.
+Validate:
+Continuously review and update the threat model to ensure it remains effective as the system evolves3.
+
+Benefits:
+Early Risk Identification:
+Helps identify security issues early in the development process, making them easier and cheaper to fix.
+Improved Security Awareness:
+Encourages a security-first mindset among developers and stakeholders2.
+Enhanced System Understanding:
+Provides a deeper understanding of the system’s architecture and potential attack vectors2.
+
+Applications:
+Threat modeling can be applied to various domains, including software applications, networks, IoT devices, and business processes1.
+
+Types:
+STRIDE Model(Spoofing,Tampering,Repudiation,Information Disclosure,Denial of Service (DoS),Elevation of Privilege)
+
+*https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool
+
+Diamond:
+Breaks down an intrusion event into four key components.
+
+ -Adversary:
+The individual or group responsible for the attack. This could be a hacker, a criminal organization, or even a nation-state.
+ -Infrastructure:
+The tools and resources used by the adversary to carry out the attack. This includes servers, malware, and communication channels.
+ -Capability:
+The methods and techniques used by the adversary. This could involve specific types of malware, phishing tactics, or other attack vectors.
+ -Victim:
+The target of the attack, which could be an individual, organization, or system.
+These components are interconnected, forming a diamond shape that helps analysts understand the relationships and dynamics of an intrusion12.
+
+How It Works:
+ -Event: 
+At the center of the diamond is the event, which is the actual occurrence of the intrusion.
+- Meta-Features:
+Additional details such as timestamps, geolocation, and other contextual information that provide deeper insights into the event.
+ -Benefits:
+Comprehensive Analysis: By examining each component, analysts can gain a thorough understanding of the attack.
+ -Improved Mitigation:
+Understanding the adversary’s methods and infrastructure helps in developing effective defense strategies.
+ -Enhanced Communication:
+The model provides a common language for discussing and documenting threats.
+
+*https://www.threatintel.academy/wp-content/uploads/2020/07/diamond-model.pdf
+*https://www.eccouncil.org/cybersecurity-exchange/ethical-hacking/diamond-model-intrusion-analysis/
+*https://kravensecurity.com/diamond-model-analysis/
+
+
+
+
 
 
 Name multiple resources for gathering threat intelligence
