@@ -33,6 +33,51 @@ Management:
 -Documentation to aid in Network troubleshooting.
 -Test implemented mechanism i.e failover processes peridocally.
 
+hen it comes to computer networking, following best practices can help ensure your network is efficient, secure, and scalable. Here are some key recommendations:
+
+1. Network Design
+Simplify Connections: Keep your network design simple and straightforward. Avoid unnecessary components and connections1.
+Document Everything: Maintain detailed documentation of your network design, including diagrams and configurations1.
+Plan for Scalability: Design your network with future growth in mind to accommodate increasing demands1.
+
+2. Security Measures
+Implement Firewalls: Use firewalls to protect your network from unauthorized access and threats1.
+Use Strong Authentication: Ensure that strong authentication methods, such as multi-factor authentication (MFA), are in place2.
+Regular Security Assessments: Conduct periodic security assessments to identify and mitigate vulnerabilities2.
+
+3. Performance Optimization
+Monitor Network Performance: Regularly monitor network performance to identify and address bottlenecks1.
+Optimize Traffic Flow: Use techniques like load balancing and Quality of Service (QoS) to optimize traffic flow and ensure critical applications have the necessary bandwidth3.
+Update Hardware and Software: Keep your network hardware and software up to date to benefit from the latest performance improvements and security patches3.
+
+4. Maintenance and Monitoring
+Regular Maintenance: Schedule regular maintenance to ensure all network components are functioning correctly and efficiently1.
+Automate Monitoring: Use automated tools to monitor network health and performance continuously3.
+Backup Configurations: Regularly back up network configurations to quickly restore service in case of failures3.
+
+5. User Training and Policies
+Educate Users: Provide training to users on best practices for network security and usage2.
+Establish Clear Policies: Implement clear network usage policies to ensure users understand their responsibilities and the importance of network security2.
+By following these best practices, you can create a robust and reliable computer network that meets your organization’s needs. If you have any specific questions or need further details on any of these points, feel free to ask!
+
+Governance:
+Developed Information Security policy to establish authorized access management and authenticator management for internal and third-party personnel.
+Ensured policy documents are aligned with business objectives, implementable b.y the organization, and practical for compliance by ensuring purpose, scope, authority, and policy statements incorporate operational perspective and constraints
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Server
 --------------------
 RAID
