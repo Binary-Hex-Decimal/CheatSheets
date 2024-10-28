@@ -1,0 +1,12 @@
+Set-up
+
+http://archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/current/legacy-images/netboot/mini.iso
+
+wget https://REMnux.org/remnux-cli
+
+mv remnux-cli remnux
+chmod +x remnux
+sudo mv remnux /usr/local/bin
+sudo apt install -y gnupg curl
+sudo remnux install
+sudo reboot
