@@ -1,0 +1,24 @@
+MEMORY:
+
+Pause a Live VM and create a snapshot
+
+Before unpausing create a memory dumop of the VM.
+
+List VMS:
+vboxmanage list vms
+
+Export the memory of a VM:
+vboxmanage debugvm {vm-uuid|VMName} dumpvmcore --filename "VMName"-Memory.raw
+
+Hash previous file:
+certUtil -hashfile ""VMName"-Memory.raw" > "VMName"-Memory.txt
+
+DISK:
+
+Unpause Virtual Machine and shutdown
+
+List Disks:
+vboxmanage list hdds
+
+Clone a disk:
+vboxmanage clonemedium disk {disk-uuid} --format VHD win10-disk.vhd
