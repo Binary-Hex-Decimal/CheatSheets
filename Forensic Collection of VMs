@@ -1,0 +1,43 @@
+Pause the machine if possible and then create a snapshot.
+
+Virtual Box:
+
+Memory:
+Identify the VM's UUID: 
+vboxmanage list vms 
+
+Create a snapshot of the VM's memory: egistry root keys:
+vboxmanage debugvm <VM_UUID> dumpvm-core --filename win10-mem.raw
+
+Disk
+Identify the VMs UUID:
+vboxmanage list vms
+
+Identify the VM's disk UUID:(Note the UUID ofthe disk in row IDE Controller)
+vboxmanage showvminfo <VM_UUID>
+
+Export the disk using the disk UUID: 
+vboxmanage clonemedium disk <disk_UUID>
+
+
+VMWare:
+
+Memory:
+Collect the .vmem and associated .vmss and vmsn if available.
+
+Disk:
+Collect all vmdk files associated with the HKLM\SYSTEM SYSTEM, SYSTEM.LOG, syst SYSTEM em.sav
+current snapshot ID
+
+Alternatively, create a single VMDK from split files: 
+
+C:\Program Files (x86\VMware\VMware Player\vm- HKU\SID NTUSER.DAT
+ware-vdiskmanager.exe» -r «d:\VMLinux\vmdk-name.vmdk» -t 0 MyNewimage.vimdk 
+
+Hash:
+
+Windows:
+Get-FileHash -Algorithm SHA1 <file> 
+
+Linux:
+shasum <file>
