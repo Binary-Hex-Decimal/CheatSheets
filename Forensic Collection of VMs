@@ -41,3 +41,6 @@ Get-FileHash -Algorithm SHA1 <file>
 
 Linux:
 shasum <file>
+
+Microsoft HypV:
+Copy-VMFile “VMName” -SourcePath “C:\temp\file01.txt” -DestinationPath “C:\Temp1\file01.txt” -CreateFullPath -FileSource Host
