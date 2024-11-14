@@ -1,0 +1,11 @@
+Disable real-time protection
+Set-MpPreference -DisableRealtimeMonitoring $true
+
+Disable the scanning of network files
+Set-MpPreference -DisableScanningNetworkFiles $true
+
+Disable the blocking of files at first sight
+Set-MpPreference -DisableBlockAtFirstSeen $true
+
+Disable Windows Defender AntiSpyware
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware /t REG_DWORD /d 1 /f
