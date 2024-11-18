@@ -9,6 +9,33 @@ grep --color=always -a -i ""Keyword1$"\|"Keyword2$"\|"Keyword3$"" "Location & Fi
 
 grep --color=always ""KEYWORD1"\|"KEYWORD2"\|"KEYWORD3"" "Location\FILE.EXTENSION" | tr '\n' ' ' | cut -d ":" -f1
 
+Let's find all occurrences of the word test in DEMO.txt:
+grep -n test Demo.txt
+
+Partial Matches:
+grep -n test DEMO.txt
+
+Search for full word:
+grep -n --word-regexp test DEMO.txt
+
+search for Lines containing test:
+grep -Pn 'test\w+' DEMO.txt
+
+search 4 letter word beginning with test:
+grep -Pn 'test\w\b' DEMO.txt
+
+Search 3 digit numbers:
+grep -Pn '\d\d\d' README.md | head
+
+fixed String:
+grep -Pn 'code.' src/data.go | head
+
+Multiple Patterns:
+grep -En -e make -e run README.md
+
+Multiple Includes and Excludes:
+grep -Pnr --include '*.go' --exclude '*_test.go' 'func'
+
 Searches for beginning of website:
 Option 1 - grep --color=always -a -i "http://\|https://" "Location & Filename"
 Option 2 - grep -Eo '(http|https)://[^/"]+'
