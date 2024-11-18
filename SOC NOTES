@@ -22,3 +22,37 @@ Types of SOC:
 Internal (SOC)
 Managed (MSOC) Oursourced
 HYBRID (SOC)
+
+SOC METRICS:
+
+Mean Time to Detect (MTTD)
+MTTD measures the average time a SOC team takes to detect an incident or a security breach. A shorter Mean Time to Detect (MTTD) value indicates better performance. It showcases the ability of the SOC team to quickly detect and respond to incidents, minimizing the impact on clients.
+
+Additionally, MTTD it helps evaluate the effectiveness of monitoring tools and the efficiency of detection capabilities.
+
+Mean Time to Investigate (MTTI)
+MTTI denotes the average time from fault detection until the IT team initiates investigation. It bridges the gap between MTTD (Mean Time to Detect) and the start of MTTR, outlining the initial response phase.
+
+Mean Time to Resolution (MTTR)
+MTTR is the metric used to evaluate the average time a SOC team takes to completely resolve an incident once it has been detected. A lower MTTR value indicates that their incident response process is fast and highly effective. Typically, MTTR includes the time it takes to:
+
+Investigate the root cause.
+Apply fixes.
+Carry out recovery processes.
+This metric allows organizations to identify areas where they need to focus, improving their incident response strategy.
+
+Mean Time to Restore Service (MTRS)
+MTRS quantifies the average time from fault detection until service is fully restored, emphasizing user-centric recovery time following repair. MTRS differs from MTTR in that MTTR measures repair duration, whereas MTRS encompasses the entire process until service is operational again.
+
+Mean Time Between Failures (MTBF)
+MTBF measures how frequently a failure occurs. It represents the average time between one failure and the next, indicating the expected interval before another failure might occur. This metric is versatile, applicable to individual components or entire systems, offering insights into overall system reliability and performance. MTBF, along with MTTR, plays a crucial role in determining system uptime. While MTTR assesses how quickly a system can be restored after a breakdown, a favorable scenario involves decreasing MTTR and increasing MTBF, highlighting minimal downtime and efficient recovery capabilities.
+
+Mean Time Between System Incidents (MTBSI)
+MTBSI signifies the average interval between successive incidents, calculated by adding MTBF and MTRS. It provides a comprehensive view of system stability and operational continuity over time.
+
+Mean Time to Attend and Analyze (MTTA&A)
+MTTA measures the average time taken by SOC teams to respond to and analyze an incident. It starts with detecting an incident and ends when the team acknowledges and properly analyzes its priority, impact and possible resolution.
+
+Therefore, this metric helps you evaluate the efficiency and effectiveness of their incident response processes.
+
+MTTA&A begins when an incident is detected or reported. It ends when the incident response team acknowledges, assesses and analyzes the incident to determine its scope, impact and potential remediation actions. This metric is crucial as it reflects the efficiency and effectiveness of the incident response process. 
