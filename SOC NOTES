@@ -1,0 +1,19 @@
+Monitor - Constant monitoring.(Event, Netowk, alert Logs)
+Detect - IOC, Patterns.
+Analyze - Analyse if incidents, Timeline, TTPs.
+Respond - Containment, Communication with Team, Response plan
+
+People - Analysts, responders etc 
+Process - IR plans, Playbooks etc
+Tech - Siem,IDS,EDR etc
+
+
+Reactive:
+Forensic, Malware analysis
+Incident response
+
+Proactive:
+threat hunting
+Threat Intelligence
+Vulnerability Assessments
+Pen Testing
