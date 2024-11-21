@@ -1,0 +1,12 @@
+Common Headers:
+
+From: Indicates the sender's name and email address.
+To: Shows the recipient's name and email address.
+Date: The date and time when the email was sent.
+Subject: The subject line of the email.
+Return-Path: The email address that should receive bounce messages.
+Message-ID: A unique identifier for the email.
+Received: Details about the servers that handled the email as it traveled from sender to recipient.
+Content-Type: Specifies the format of the email (e.g., text/plain, text/html).
+MIME-Version: Indicates the version of the MIME protocol used.
+Reply-To: The email address to which replies should be sent.
