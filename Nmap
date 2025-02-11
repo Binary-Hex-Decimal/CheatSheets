@@ -3,7 +3,7 @@ Nmap [1 - Target Specification] [2 - Host Discovery] [3 - Scan Technique] [4 - P
 
 EXAMPLE:-
 --------------------
-udr st the end to save
+Save scan(place at end)
 server_assets_pingsweep.nmap
 
 Scan port 80 on the target system:
