@@ -1,0 +1,34 @@
+Cloning ESXI
+
+Create master image in ESXI
+
+Perform windows Update, Patchs etc
+
+Syprep the image and select the otionvshutdown. this will generalise the image for mass deployement
+
+Via Datastore or SSH create a new directory and create a copy of the master Image
+
+Open the VMF file of the copied Master Image
+
+Search for the name of the VM name given originally. e.g Master Image. 
+
+Example:
+
+change the name "test" and enter the new VM name.
+
+displayName = "test"
+extendedConfigFile = "test.vmxf"
+scsi0:0.fileName = "test.vmdk"
+nvram = "test.nvram"
+sched.swap.derivedName = "/vmfs/volumes/e5d389b8-f51f8ed9/Test Name change/"test"-c3846e24.vswp"
+migrate.hostLog = "./test.hlog"
+
+Open the "test".vmdk file and Change the name of the current "test-flat.vmdk" to reflect The new name i.e server1-flat.vmdk
+
+Click register VM and select location and VMX file
+
+When powering on select the Copied option
+
+Give the VM a password
+
+Change the VM Machine name
