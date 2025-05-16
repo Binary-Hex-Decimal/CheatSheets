@@ -66,3 +66,243 @@ SigninLogs
 | extend countryOrRegion_ = tostring(LocationDetails.countryOrRegion)
 | distinct TimeGenerated, Identity, city_, state_, countryOrRegion_, IPAddress
 
+DATA---->Condition(filter & Prepare)---->Analyze---->Evidence(Prepare)
+
+SecurityEvent---->"| where EventID == "4624 ----> summarize count() by Account ---->| top 10 by _count"---->
+	Data				Filter & Prepare			Analyze								Prepare
+
+----------------------------------------------------------------------------------------------------
+**SAMPLE KQL**--------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+View generated events by age:
+
+SecurityEvent
+| where TimeGenerated > ago(1d)
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------
+View generated events by age and specific eventID:
+
+SecurityEvent
+| where TimeGenerated > ago(1h) and EventID == "4624"
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------
+View generated events by age and specific eventID and AccountType:
+
+SecurityEvent
+| where TimeGenerated > ago(1h)
+| where EventID == 4624
+| where AccountType =~ "user"
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------
+View generated evetns by EventID:
+
+SecurityEvent | where EventID in (4624, 4625)
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------
+****Declare Variables:
+
+"% around words is used to denote a variable and for visuals and shoudl not be in actualy query"
+
+let timeOffset = 7d;
+let discardEventId = 4688;
+
+SecurityEvent
+| where TimeGenerated > ago(%timeOffset%*2) and TimeGenerated < ago(timeOffset)
+| where EventID != %discardEventId%
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------
+****Declare Dynamic Lists or Lists:
+
+let suspiciousAccounts = datatable(account: string) [
+    @"\administrator", 
+    @"NT AUTHORITY\SYSTEM"
+];
+SecurityEvent | where Account in (suspiciousAccounts)
+
+
+let LowActivityAccounts =
+    SecurityEvent 
+    | summarize cnt = count() by Account 
+    | where cnt < 1000;
+LowActivityAccounts | where Account contains "SQL"
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------
+****Extend Operator
+
+SecurityEvent
+| where ProcessName != "" and Process != ""
+| extend StartDir =  substring(ProcessName,0, string_size(ProcessName)-string_size(Process))
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------
+****Order by Operator
+
+SecurityEvent
+| where ProcessName != "" and Process != ""
+| extend StartDir =  substring(ProcessName,0, string_size(ProcessName)-string_size(Process))
+| order by StartDir desc, Process asc
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------
+****Project Operator
+
+project	Select the columns to include, rename or drop, and insert new computed columns.
+project-away	Select what columns from the input to exclude from the output.
+project-keep	Select what columns from the input to keep in the output.
+project-rename	Select the columns to rename in the resulting output.
+project-reorder	Set the column order in the resulting output.
+
+"
+SecurityEvent
+| project Computer, Account
+
+
+SecurityEvent
+| where ProcessName != "" and Process != ""
+| extend StartDir =  substring(ProcessName,0, string_size(ProcessName)-string_size(Process))
+| order by StartDir desc, Process asc
+| project Process, StartDir
+"
+
+"
+SecurityEvent
+| where ProcessName != "" and Process != ""
+| extend StartDir =  substring(ProcessName,0, string_size(ProcessName)-string_size(Process))
+| order by StartDir desc, Process asc
+| project-away ProcessName
+"
+
+
+----------------------------------------------------------------------------------------------------
+****Summarize
+
+"
+SecurityEvent | summarize by Activity
+
+SecurityEvent
+| where EventID == "4688"
+| summarize count() by Process, Computer
+"
+
+"
+SecurityEvent
+| where TimeGenerated > ago(1h)
+| where EventID == 4624
+| summarize cnt=count() by AccountType, Computer
+"
+
+"
+SecurityEvent
+| summarize dcount(IpAddress)
+"
+
+"
+let timeframe = 30d;
+let threshold = 1;
+SigninLogs
+| where TimeGenerated >= ago(timeframe)
+| where ResultDescription has "Invalid password"
+| summarize applicationCount = dcount(AppDisplayName) by UserPrincipalName, IPAddress
+| where applicationCount >= threshold
+"
+
+Create a List:
+
+"
+SecurityEvent
+| where EventID == "4624"
+| summarize make_list(Account) by Computer
+"
+
+
+----------------------------------------------------------------------------------------------------
+****Render
+
+	areachart
+	barchart
+	columnchart
+	piechart
+	scatterchart
+	timechart
+
+Creates a
+"
+SecurityEvent 
+
+| summarize count() by bin(TimeGenerated, 1d) 
+| render timechart
+"
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------
+****Union Operator
+
+// Query 1
+
+returns all rows of SecurityEvent and all rows of SigninLogs
+
+SecurityEvent 
+| union SigninLogs  
+
+// Query 2
+
+returns one row and column, which is the count of all rows of SecurityEvent and all rows of SigninLogs
+
+SecurityEvent 
+| union SigninLogs  
+| summarize count() 
+| project count_
+
+// Query 3
+
+returns all rows of SecurityEvent and one row for SigninLogs.
+
+SecurityEvent 
+| union (SigninLogs | summarize count()| project count_)
+
+Wildcard:
+union Security* 
+| summarize count() by Type
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------
+****Join Operator
+
+kind=leftanti, kind=leftantisemi	Returns all the records from the left side that don't have matches from the right
+kind=rightanti, kind=rightantisemi	Returns all the records from the right side that don't have matches from the left.
+kind unspecified, kind=innerunique	Only one row from the left side is matched for each value of the on key. The output contains a row for each match of this row with rows from the right
+kind=leftsemi	Returns all the records from the left side that have matches from the right.
+kind=rightsemi	Returns all the records from the right side that have matches from the left.
+kind=inner	Contains a row in the output for every combination of matching rows from left and right.
+kind=leftouter (or kind=rightouter or kind=fullouter)	Contains a row for every row on the left and right, even if it has no match. The unmatched output cells contain nulls.
+
+"
+SecurityEvent 
+| where EventID == "4624" 
+| summarize LogOnCount=count() by EventID, Account 
+| project LogOnCount, Account 
+| join kind = inner (
+     SecurityEvent 
+     | where EventID == "4634" 
+     | summarize LogOffCount=count() by EventID, Account 
+     | project LogOffCount, Account 
+) on Account
+"
+----------------------------------------------------------------------------------------------------
