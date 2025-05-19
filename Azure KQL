@@ -1,3 +1,170 @@
+KQL Operators:
+
+Basic Operators:
+
+	:	-	Equals
+	=	-	Equals
+	<>	-	Does not equal
+	!=	-	Does not equal
+	<	-	Less Than
+	<=	-	Less than or equal to
+	>	-	Greater than
+	>=	-	Greater than or equal
+	and	-	Add condtitions
+	or	-	Add choice
+	==	-	Case sensitive
+	=~	-	Case insensitive
+	!~	-	Case insensitive and not equal to:
+
+Numerical Operators:
+
+	+		-	Addition
+	-		-	Subtraction
+	*		-	Multiplication
+	/		-	Division
+	%		-	Modulo
+	in		- 	Equals to any of the elements
+	Example: 
+		"ColumnName" in ("Value1", "Value2", "Value3")
+			i.e | where EventID in (4624, 4625)
+	!in		- Not equals to any of the elements
+	in~		- Equals to any of the elements
+	Example:
+		"ColumnName" in ("Value1", "Value2", "Value3")
+			i.e | where EventID in (4624, 4625)
+	!in~	-Not equals to any of the elements
+	
+Time Operators:
+	
+	1d	-	1 day	
+	1h	-	1 hour
+	10m	-	10 Minutes	
+	30s	-	30 Seconds
+	
+	Examples:
+	// Last 24hrs
+	| Where TimeGenerated > ago(24h)
+	
+	// Between two dates
+	| Where TimeGenerated between(datetime(2022-08-01 00:00:00) .. datetime(2022-08-01 06:00:00))
+
+Source Operators:
+
+	where	-	Filters source data
+	extend	-	Computes and adds a new column to the source
+	count	-	Counts the number of records in a table
+	project	-	Chooses required columns in the output
+	take	-	Gets random sample records
+	summarize	-	Performs aggregations based on the provided function
+	join	-	Merges rows of two tables based on matching fields
+	union	-	Returns rows from two or more tables
+
+	Examples:
+	// where
+	| Where ColumnName = Variable
+		i.e | where Computer has "contosohotels.com"
+			| where EventID in (4624, 4624)
+			
+	// extend(Adds a new calculated column.)
+	| extend NewColumnName=now()-TimeGenerated
+		i.e | extend EventAge=now()-TimeGenerated
+	
+	// count(Counts the number of columns.)
+	| count
+	
+	// project
+	| project ColumnName, ColumnName, ColumnName, ColumnName, ColumnName
+		i.e | project TimeGenerated, EventID, Account,Computer, LogonType
+		// add = "Newname" to give the column a new name.
+		// use Project-Away instead of Project to just remove columns.
+	
+	// take(takes 5 random rows)
+	| take 5
+	
+	// summarize
+	| summarize by ColumnName, ColumnName
+		i.e | summarize by Computer, Account
+		
+	// join(Merge two tables to create a new table)
+		//basic 
+		| Join (TableName) on ColumnName
+		//Complex
+		| join
+		(TableName) on $left.Computer == $right.Computer
+		
+		//Join Flavour
+			innerunique 
+			inner
+			leftouter	
+			rightouter
+			fullouter
+			leftsemi
+			leftanti
+			rightsemi	
+			rightanti, rightantisemi
+	
+	// union(Takes two or more tables and returns the rows of all of them.)
+	//Basic(return all values whos name starts with k and the column is named ColumnName)
+	union K* | where * has "ColumnName"
+
+Data View Operators:
+	//Sort
+	| Sort by "Value"
+		/i.e | where EventID == 4624 | sort by count_ asc or desc
+
+Data Visualisations Operators:
+
+| Render
+	Examples:
+		| summarize total_page_views=count() by Name
+		| sort by total_page_views | render columnchart
+
+	Data Visualisations Type Operators:
+	
+		anomalychart
+		areachart
+		barchart
+		columnchart
+		ladderchart
+		linechart
+		piechart
+		pivotchart
+		scatterchart
+		stackedareachart	
+		timechart	
+		timepivot	
+		treemap
+		
+Search Operators:
+
+// Search everyhing for Green
+ search "Green"
+// Specific Search
+Examples:
+	1, | where ProcessName ==@"C:\Windows\System32\svchost.exe"
+	2, | where CommandLine contains "guest"
+	3, | where Computer startswith "DC"
+	4, | where Computer endswith "DC"
+	5, | where Computer in ("Computer1", "Computer2")
+	6, | where Computer matches regex @"\.contoso.+"
+
+Let Operator:
+Example:
+	1, 
+	let _LetName = dynamic(["Computer1", "Computer2"]);
+	| where Computer in (_LetName)
+	2,
+	let _Last24Hours = ago(24h);
+	| where TimeGenerated > _Last24Hours
+
+
+
+
+
+
+
+EXAMPLES:
+
 Show you all active user accounts that have logged in within the last 7 days and have a level of 3 or higher:
 
 SigninLogs
